@@ -1,362 +1,89 @@
 <!doctype html>
-<html lang="tr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0f4c3a">
-
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Saha Asistanı">
-<title>Fergin Saha Asistanı</title>
+<html lang="tr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#124f3b"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Saha Asistanı">
+<title>Fergin Saha Asistanı v3</title>
 <style>
-:root{
-  --bg:#f4f7f5; --card:#fff; --ink:#14221d; --muted:#68756f;
-  --brand:#0f4c3a; --brand2:#239167; --soft:#e9f4ef; --line:#dfe7e3;
-  --warn:#a35b00; --warnbg:#fff5e5; --red:#9d2f35; --redbg:#fff0f1;
-  --shadow:0 8px 24px rgba(16,52,40,.08);
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
-body{padding-bottom:92px}
-button,input,select,textarea{font:inherit}
-header{
-  position:sticky;top:0;z-index:20;background:rgba(244,247,245,.94);
-  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
-  padding:calc(env(safe-area-inset-top) + 10px) 14px 12px;
-}
-.head{display:flex;align-items:center;gap:11px;max-width:1100px;margin:auto}
-.logo{width:42px;height:42px;border-radius:13px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:800;font-size:22px;box-shadow:var(--shadow)}
-h1{font-size:18px;margin:0;line-height:1.1}
-.sub{font-size:12px;color:var(--muted);margin-top:3px}
-.search{max-width:1100px;margin:10px auto 0;display:flex;gap:8px}
-.search input{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;outline:none}
-main{max-width:1100px;margin:auto;padding:14px}
-.hero{
-  background:linear-gradient(135deg,#0f4c3a,#197355);color:#fff;border-radius:22px;padding:18px;box-shadow:var(--shadow);
-  display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center
-}
-.hero h2{font-size:23px;margin:0 0 7px}.hero p{margin:0;opacity:.9;font-size:14px}
-.hero .pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);padding:8px 10px;border-radius:999px;font-size:12px}
-.section-title{font-size:16px;margin:22px 2px 10px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-@media(min-width:760px){.grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}
-.product{cursor:pointer;min-height:138px;display:flex;flex-direction:column;justify-content:space-between}
-.product .name{font-weight:800;font-size:17px}.product .active{font-size:12px;color:var(--muted);margin-top:4px}
-.badge{display:inline-block;font-size:11px;padding:5px 8px;border-radius:999px;background:var(--soft);color:var(--brand);font-weight:700}
-.quick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.quick button,.btn{border:0;border-radius:14px;padding:13px 14px;font-weight:750;cursor:pointer}
-.primary{background:var(--brand);color:white}.secondary{background:#fff;border:1px solid var(--line)!important;color:var(--ink)}
-.warn{background:var(--warnbg);color:var(--warn)}
-.red{background:var(--redbg);color:var(--red)}
-.tabs{display:flex;overflow:auto;gap:7px;padding-bottom:4px;margin:12px 0}
-.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-size:13px}
-.tab.active{background:var(--brand);color:#fff;border-color:var(--brand)}
-.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
-.row:last-child{border-bottom:0}.label{color:var(--muted);font-size:12px}.value{text-align:right;font-weight:650;font-size:13px}
-.study{padding:12px;border:1px solid var(--line);border-radius:14px;margin-bottom:9px;background:#fff}
-.study b{display:block;margin-bottom:6px}.study small{color:var(--muted)}
-.source a{color:var(--brand);text-decoration:none;font-weight:650}
-textarea{width:100%;min-height:110px;border:1px solid var(--line);border-radius:13px;padding:12px;resize:vertical}
-input.data,select.data{width:100%;border:1px solid var(--line);border-radius:11px;padding:10px;background:#fff}
-.notice{border-radius:14px;padding:12px;background:var(--warnbg);color:#754200;font-size:12px;line-height:1.45}
-.ok{border-radius:14px;padding:12px;background:var(--soft);color:#184d39;font-size:12px;line-height:1.45}
-footer{font-size:11px;color:var(--muted);padding:18px 3px 0;line-height:1.45}
-.bottom{
-  position:fixed;z-index:30;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:8px 8px calc(env(safe-area-inset-bottom) + 8px);
-  display:grid;grid-template-columns:repeat(4,1fr);gap:3px
-}
-.bottom button{border:0;background:transparent;padding:8px 2px;color:var(--muted);font-size:11px}
-.bottom button span{display:block;font-size:20px;margin-bottom:2px}
-.modal{position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.42);display:none;align-items:flex-end}
-.modal.show{display:flex}.sheet{width:100%;max-height:88vh;overflow:auto;background:var(--bg);border-radius:24px 24px 0 0;padding:15px 15px calc(env(safe-area-inset-bottom) + 20px)}
-.handle{width:46px;height:5px;background:#c7d0cc;border-radius:99px;margin:0 auto 12px}
-.sheet h3{margin:4px 0 12px}
-.x{float:right;background:#fff;border:1px solid var(--line);border-radius:999px;width:34px;height:34px}
-.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
-.kpi div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px;text-align:center}
-.kpi b{display:block;font-size:20px;color:var(--brand)}
-.search-results{margin-top:10px}.search-item{background:#fff;border:1px solid var(--line);padding:10px;border-radius:12px;margin-bottom:7px}
-.hidden{display:none!important}
-hr{border:0;border-top:1px solid var(--line);margin:14px 0}
-</style>
-</head>
-<body>
-<header>
-  <div class="head">
-    <div class="logo">F+</div>
-    <div><h1>Fergin Saha Asistanı</h1><div class="sub">5 ürün • çalışmalar • NICE • saha notları</div></div>
-  </div>
-  <div class="search"><input id="searchBox" placeholder="eGFR, DAPA-CKD, NICE, rivaroksaban, fiyat…"></div>
-  <div id="searchResults" class="search-results hidden"></div>
-</header>
-
+:root{--bg:#f4f7f5;--card:#fff;--ink:#12231d;--muted:#69766f;--brand:#124f3b;--brand2:#28755b;--soft:#e8f3ee;--line:#dde7e2;--amber:#fff3d6;--red:#fff0f0;--shadow:0 8px 24px rgba(16,52,40,.08)}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}body{padding-bottom:92px}
+button,input,select{font:inherit}header{position:sticky;top:0;z-index:20;background:rgba(244,247,245,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:calc(env(safe-area-inset-top) + 9px) 14px 11px}
+.head{max-width:1100px;margin:auto;display:flex;gap:11px;align-items:center}.logo{width:45px;height:45px;border-radius:14px;background:var(--brand);color:white;display:grid;place-items:center;font-weight:900;font-size:22px}
+h1{font-size:19px;margin:0}.sub{font-size:12px;color:var(--muted);margin-top:3px}main{max-width:1100px;margin:auto;padding:14px}
+.hero{background:linear-gradient(135deg,#124f3b,#2f795e);color:#fff;border-radius:23px;padding:19px;box-shadow:var(--shadow)}.hero h2{margin:0 0 7px;font-size:23px}.hero p{margin:0;line-height:1.45;opacity:.92}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}@media(min-width:800px){.grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}.product{min-height:155px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer}
+.name{font-size:18px;font-weight:850}.active{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}.badge{display:inline-block;background:var(--soft);color:var(--brand);font-size:10px;font-weight:800;padding:5px 7px;border-radius:999px;margin:2px}
+.section-title{font-size:17px;margin:22px 2px 10px}.tabs{display:flex;gap:7px;overflow:auto;margin:12px 0;padding-bottom:3px}.tab,.spec{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px}.tab.active,.spec.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.back{border:1px solid var(--line);background:#fff;border-radius:13px;padding:10px 12px;font-weight:750}.script{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin-top:10px}.script h3{margin:0 0 4px}.focus{font-size:12px;color:var(--brand);font-weight:800;margin-bottom:10px}
+.script-text{font-size:15px;line-height:1.55;white-space:pre-wrap}.study{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;margin-bottom:9px}.study h4{margin:0 0 7px;font-size:16px}.kv{display:grid;grid-template-columns:95px 1fr;gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:12px;line-height:1.4}.kv:first-of-type{border-top:0}.k{color:var(--muted);font-weight:700}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.row:last-child{border-bottom:0}.value{text-align:right;font-weight:750}
+.comp{padding:11px 0;border-bottom:1px solid var(--line)}.comp:last-child{border-bottom:0}.comp-head{display:flex;justify-content:space-between;gap:8px;align-items:start}.comp b{font-size:14px}.comp small{display:block;color:var(--muted);margin-top:4px;line-height:1.35}.type{font-size:10px;background:var(--soft);color:var(--brand);border-radius:999px;padding:4px 6px;white-space:nowrap}
+.notice,.ok,.danger{border-radius:14px;padding:12px;font-size:12px;line-height:1.45}.notice{background:var(--amber)}.ok{background:var(--soft);color:#174d39}.danger{background:var(--red);color:#7d3030}.search{margin-top:10px}.search input{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.quick-grid button{border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px;font-weight:750}.quick-grid .primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:7px 7px calc(env(safe-area-inset-bottom) + 8px);display:grid;grid-template-columns:repeat(4,1fr)}
+.bottom button{border:0;background:transparent;color:var(--muted);font-size:11px;padding:7px 2px}.bottom span{display:block;font-size:20px;margin-bottom:2px}
+select{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff}.muted{color:var(--muted)}
+</style></head><body>
+<header><div class="head"><div class="logo">F+</div><div><h1>Fergin Saha Asistanı</h1><div class="sub">Uzmanlığa özel 60 sn • çalışma açıklaması • form • fiyat • rakip</div></div></div><div class="search"><input id="q" placeholder="DAPA-CKD, CARDS, ANATOLIA, fiyat, rakip..." oninput="searchApp(this.value)"></div></header>
 <main id="app"></main>
-
-<nav class="bottom">
-  <button onclick="goHome()"><span>⌂</span>Ana Sayfa</button>
-  <button onclick="openPrep()"><span>⚡</span>60 Saniye</button>
-  <button onclick="openStudies()"><span>▤</span>Çalışmalar</button>
-  <button onclick="openData()"><span>⚙︎</span>Veri</button>
-</nav>
-
-<div id="modal" class="modal" onclick="if(event.target===this) closeModal()">
- <div class="sheet">
-  <div class="handle"></div>
-  <button class="x" onclick="closeModal()">×</button>
-  <div id="modalBody"></div>
- </div>
-</div>
-
+<nav class="bottom"><button onclick="home()"><span>⌂</span>Ana Sayfa</button><button onclick="quick()"><span>⚡</span>60 Saniye</button><button onclick="studiesAll()"><span>▤</span>Çalışmalar</button><button onclick="pricesAll()"><span>₺</span>Fiyat/Rakip</button></nav>
 <script>
-const PRODUCTS = {
- calira:{
-  name:"Calira", company:"Sanovel", active:"Dapagliflozin", area:"Endokrin ve Metabolizma",
-  forms:["10 mg"],
-  source:{label:"Sanovel ürün sayfası",url:"https://www.sanovel.com.tr/tedavi-alanlarimiz-urunlerimiz/urunlerimiz/calira"},
-  studies:["DECLARE–TIMI 58","DAPA-HF","DAPA-CKD","DELIVER","DAPA-MI"],
-  nice:[
-   ["NG28","Type 2 diabetes in adults: management","https://www.nice.org.uk/guidance/ng28"],
-   ["TA288","Dapagliflozin in combination therapy for type 2 diabetes","https://www.nice.org.uk/guidance/ta288"],
-   ["TA418","Dapagliflozin in triple therapy for type 2 diabetes","https://www.nice.org.uk/guidance/ta418"],
-   ["NG106","Chronic heart failure in adults","https://www.nice.org.uk/guidance/ng106"],
-   ["TA902","Dapagliflozin for HF with preserved/mildly reduced EF","https://www.nice.org.uk/guidance/ta902"],
-   ["NG203","Chronic kidney disease: assessment and management","https://www.nice.org.uk/guidance/ng203"],
-   ["TA1075","Dapagliflozin for treating chronic kidney disease","https://www.nice.org.uk/guidance/ta1075"]
-  ]
- },
- caliramet:{
-  name:"Calira-Met",company:"Sanovel",active:"Dapagliflozin + Metformin",area:"Endokrin ve Metabolizma",
-  forms:["5 mg / 850 mg","5 mg / 1000 mg"],
-  source:{label:"Sanovel ürün sayfası",url:"https://www.sanovel.com.tr/tedavi-alanlarimiz-urunlerimiz/urunlerimiz/calira-met"},
-  studies:["Dapagliflozin + metformin kombinasyon çalışmaları","DECLARE–TIMI 58 (molekül kanıtı)","DAPA-HF (molekül kanıtı)","DAPA-CKD (molekül kanıtı)","DELIVER (molekül kanıtı)"],
-  nice:[
-   ["NG28","Type 2 diabetes in adults: management","https://www.nice.org.uk/guidance/ng28"],
-   ["TA288","Dapagliflozin in combination therapy for type 2 diabetes","https://www.nice.org.uk/guidance/ta288"],
-   ["TA418","Dapagliflozin in triple therapy for type 2 diabetes","https://www.nice.org.uk/guidance/ta418"]
-  ]
- },
- calirametxr:{
-  name:"Calira-Met XR",company:"Sanovel",active:"Dapagliflozin + Metformin",area:"Endokrin ve Metabolizma",
-  forms:["5 mg / 500 mg","10 mg / 500 mg","5 mg / 1000 mg","10 mg / 1000 mg"],
-  source:{label:"Sanovel ürün sayfası",url:"https://www.sanovel.com.tr/tedavi-alanlarimiz-urunlerimiz/urunlerimiz/calira-met-xr"},
-  studies:["Dapagliflozin + uzatılmış salımlı metformin çalışmaları","Farmakokinetik / biyoeşdeğerlik çalışmaları","DECLARE–TIMI 58 (molekül kanıtı)","DAPA-HF (molekül kanıtı)","DAPA-CKD (molekül kanıtı)","DELIVER (molekül kanıtı)"],
-  nice:[
-   ["NG28","Type 2 diabetes in adults: management","https://www.nice.org.uk/guidance/ng28"],
-   ["TA288","Dapagliflozin in combination therapy for type 2 diabetes","https://www.nice.org.uk/guidance/ta288"]
-  ]
- },
- ator:{
-  name:"Ator",company:"Sanovel",active:"Atorvastatin",area:"Kardiyovasküler",
-  forms:["10 mg","20 mg","40 mg","80 mg"],
-  source:{label:"Sanovel ürün sayfası",url:"https://www.sanovel.com.tr/tedavi-alanlarimiz-urunlerimiz/urunlerimiz/ator"},
-  studies:["ASCOT-LLA","CARDS","TNT","IDEAL","SPARCL","MIRACL","PROVE IT–TIMI 22"],
-  nice:[
-   ["NG238","Cardiovascular disease: risk assessment and reduction, including lipid modification","https://www.nice.org.uk/guidance/ng238"]
-  ]
- },
- venomia:{
-  name:"Venomia",company:"Sanovel",active:"Rivaroksaban",area:"Kardiyovasküler",
-  forms:["15 mg","20 mg"],
-  source:{label:"Sanovel ürün sayfası",url:"https://www.sanovel.com.tr/tedavi-alanlarimiz-urunlerimiz/urunlerimiz/venomia"},
-  studies:["ROCKET AF","EINSTEIN-DVT","EINSTEIN-PE","EINSTEIN-Extension","EINSTEIN-CHOICE","RECORD 1","RECORD 2","RECORD 3","RECORD 4","COMPASS","VOYAGER PAD","ATLAS ACS 2–TIMI 51"],
-  nice:[
-   ["NG196","Atrial fibrillation: diagnosis and management","https://www.nice.org.uk/guidance/ng196"],
-   ["TA256","Rivaroxaban for prevention of stroke/systemic embolism in atrial fibrillation","https://www.nice.org.uk/guidance/ta256"],
-   ["TA261","Rivaroxaban for DVT treatment and prevention of recurrent DVT/PE","https://www.nice.org.uk/guidance/ta261"]
-  ]
- }
-};
-
-const app=document.getElementById('app'), modal=document.getElementById('modal'), modalBody=document.getElementById('modalBody');
-const keys=Object.keys(PRODUCTS);
-let current=null, currentTab='ozet';
-
-function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-function storeKey(id,field){return `fergin:${id}:${field}`}
-function getStored(id,field,def=''){return localStorage.getItem(storeKey(id,field)) ?? def}
-function setStored(id,field,val){localStorage.setItem(storeKey(id,field),val)}
-
-function goHome(){
- current=null;
- app.innerHTML=`
-  <section class="hero">
-   <div><h2>Doktora girmeden önce hazır ol.</h2><p>Ürünü seç, çalışmaları ve NICE başlıklarını kontrol et, kişisel saha notunu aç.</p></div>
-   <div class="pill">Çevrimdışı çalışır</div>
-  </section>
-  <h3 class="section-title">Ürünler</h3>
-  <div class="grid">
-   ${keys.map(k=>{const p=PRODUCTS[k];return `<div class="card product" onclick="openProduct('${k}')">
-     <div><div class="name">${p.name}</div><div class="active">${p.active}</div></div>
-     <div><span class="badge">${p.forms.length} form</span> <span class="badge">${p.studies.length} çalışma</span></div>
-   </div>`}).join('')}
-  </div>
-  <h3 class="section-title">Hızlı işlemler</h3>
-  <div class="quick">
-    <button class="primary" onclick="openPrep()">⚡ 60 Saniye</button>
-    <button class="secondary" onclick="openStudies()">▤ Tüm Çalışmalar</button>
-    <button class="secondary" onclick="openData()">⚙︎ Fiyat / SUT</button>
-    <button class="secondary" onclick="installHelp()">＋ Ana Ekrana Ekle</button>
-  </div>
-  <div class="notice" style="margin-top:14px"><b>Bilimsel güvenlik:</b> Uygulamadaki çalışma adları ve kılavuz başlıkları eğitim/saha organizasyonu içindir. Doz, endikasyon, fiyat ve SUT bilgileri güncel KÜB/KT/SGK kaynağı doğrulanmadan kullanılmamalıdır.</div>
-  <footer>Fergin Saha Asistanı • Yerel veriler cihazında saklanır. Uygulama hekim kararının veya güncel resmi ürün bilgisinin yerine geçmez.</footer>
- `;
+const DATA = {"calira": {"name": "Calira", "active": "Dapagliflozin", "company": "Sanovel", "forms": [{"form": "5 mg film kaplı tablet", "pack": "28 tablet", "price": "504,57 TL"}, {"form": "10 mg film kaplı tablet", "pack": "28 tablet", "price": "673,02 TL"}], "price_date": "25.09.2026", "competitors": [{"brand": "FORZIGA", "company": "AstraZeneca", "detail": "Dapagliflozin 10 mg / 28 tb", "price": "802,01 TL", "type": "Aynı molekül"}, {"brand": "DAPLIG", "company": "Saba", "detail": "Dapagliflozin 10 mg / 28 tb", "price": "634,88 TL", "type": "Aynı molekül"}, {"brand": "GLYXAR", "company": "Ali Raif", "detail": "Dapagliflozin 10 mg", "price": "634,92 TL", "type": "Aynı molekül"}, {"brand": "JAGLIF", "company": "Nobel", "detail": "Dapagliflozin 5 mg / 10 mg", "price": "5 mg 510,70 TL • 10 mg 673,02 TL", "type": "Aynı molekül"}, {"brand": "DAPADAP", "company": "Sandoz", "detail": "Dapagliflozin 10 mg", "price": "673,02 TL", "type": "Aynı molekül"}, {"brand": "GLAZONE", "company": "Santa Farma", "detail": "Dapagliflozin 10 mg", "price": "673,02 TL", "type": "Aynı molekül"}, {"brand": "DANIPTA", "company": "İlko", "detail": "Dapagliflozin 10 mg", "price": "672,97 TL", "type": "Aynı molekül"}, {"brand": "DAPGEON", "company": "Genveon", "detail": "Dapagliflozin 10 mg", "price": "673,02 TL", "type": "Aynı molekül"}, {"brand": "DAPRENZA", "company": "Biofarma", "detail": "Dapagliflozin 10 mg", "price": "767,37 TL", "type": "Aynı molekül"}, {"brand": "JARDIANCE", "company": "Boehringer Ingelheim", "detail": "Empagliflozin 10 / 25 mg", "price": "10 mg 822,49 TL • 25 mg 856,95 TL", "type": "Aynı sınıf"}], "sut": "Geri ödeme ve reçete koşulları endikasyon ve hasta özelliklerine göre değişebilir. Saha öncesi güncel SGK SUT ile onaylı KÜB/KT mutlaka kontrol edilmelidir.", "studies": [{"name": "DECLARE–TIMI 58", "type": "Randomize KV sonuç çalışması", "population": "17.160 Tip 2 diyabetli; yerleşik KVH veya çoklu risk faktörü", "design": "Dapagliflozin ve plasebo; medyan takip yaklaşık 4,2 yıl.", "result": "KV güvenlilik gösterildi. KV ölüm + kalp yetersizliği yatışı birleşik sonucunda yarar; etki özellikle KY yatışındaki azalmayla ilişkilendirildi.", "field": "Endokrin/Dahiliye için kardiyorenal risk; Kardiyoloji için KY yatışı mesajını destekler.", "warning": "Molekül kanıtıdır; hasta seçimi ve endikasyon güncel KÜB'e göre yapılır."}, {"name": "DAPA-HF", "type": "Randomize, çift kör", "population": "4.744 HFrEF; LVEF ≤%40, NYHA II–IV; diyabet olsun/olmasın", "design": "Dapagliflozin 10 mg ve plasebo, standart KY tedavisine ek.", "result": "Kötüleşen kalp yetersizliği veya KV ölüm primer birleşik sonlanımı: HR 0,74.", "field": "Kardiyoloji için ana çalışma; Dahiliye'de KY eşlik eden hastada kısa kanıt.", "warning": "Calira-Met/Met XR kombinasyonuna otomatik olarak KY endikasyonu taşınmaz."}, {"name": "DAPA-CKD", "type": "Randomize, çift kör", "population": "4.304 KBH; eGFR 25–75, UACR 200–5000; diyabet olsun/olmasın", "design": "Dapagliflozin 10 mg ve plasebo; standart bakıma ek.", "result": "Primer renal/KV bileşik sonlanım: HR 0,61.", "field": "Nefroloji için ana çalışma; Endokrin/Dahiliye'de renal risk mesajının omurgası.", "warning": "Başlama/sürdürme eGFR koşullarında güncel KÜB esas alınır."}, {"name": "DELIVER", "type": "Randomize, çift kör", "population": "6.263 kalp yetersizliği hastası; LVEF >%40", "design": "Dapagliflozin ve plasebo.", "result": "Kötüleşen kalp yetersizliği veya KV ölüm: HR 0,82.", "field": "Kardiyoloji için HFmrEF/HFpEF spektrumunda dapagliflozin kanıtı.", "warning": "Molekül kanıtıdır."}], "scripts": {"Dahiliye": {"focus": "Tip 2 DM + kardiyorenal risk", "text": "Hocam, Tip 2 diyabette yalnız HbA1c’yi değil kalp ve böbrek riskini de aynı anda yönetmek gerekiyor. Dapagliflozinde DAPA-CKD 4.304 hastada renal/KV bileşik sonlanımda HR 0,61; DAPA-HF ise 4.744 HFrEF hastasında kötüleşen KY veya KV ölümde HR 0,74 gösterdi. Calira 10 mg, Tip 2 diyabetin yanında KÜB çerçevesinde kalp yetersizliği ve kronik böbrek hastalığında da kullanılan dapagliflozin seçeneği. Özellikle kardiyorenal riski belirgin, KÜB’e uygun ilk hastanızda Calira’yı değerlendirir misiniz?"}, "Endokrinoloji": {"focus": "Erken SGLT2 + kardiyorenal koruma", "text": "Hocam, Tip 2 diyabette hedef artık yalnız glisemik kontrol değil; kardiyovasküler ve renal riski erkenden yönetmek. DECLARE 17.160 hastalık KV veri setini, DAPA-CKD renal korumayı, DAPA-HF ise kalp yetersizliği yararını destekliyor. NICE 2026 da uygun Tip 2 diyabet hastasında SGLT2 inhibitörlerini daha erken konumluyor. Calira 10 mg ile dapagliflozini sade bir seçenek olarak sunuyoruz. Özellikle kardiyorenal riski eşlik eden uygun hastanızda Calira’yı değerlendirir misiniz?"}, "Kardiyoloji": {"focus": "HFrEF + HFmrEF/HFpEF", "text": "Hocam, dapagliflozinin kalp yetersizliği kanıtı EF spektrumunun iki tarafında da güçlü. DAPA-HF’de 4.744 HFrEF hastasında kötüleşen KY veya KV ölüm HR 0,74; DELIVER’da LVEF yüzde 40’ın üzerinde 6.263 hastada aynı birleşik sonlanım HR 0,82. Calira 10 mg dapagliflozin seçeneği olarak bu kardiyometabolik yaklaşımda yer alıyor. Uygun kalp yetersizliği hastanızda güncel KÜB koşullarıyla Calira’yı değerlendirir misiniz?"}, "Nefroloji": {"focus": "KBH + renal/KV sonlanım", "text": "Hocam, kronik böbrek hastasında amaç sadece eGFR’yi takip etmek değil, renal ve kardiyovasküler sonlanımları birlikte azaltmak. DAPA-CKD’de 4.304 hastada primer renal/KV bileşik sonlanım HR 0,61. Calira 10 mg dapagliflozin seçeneği olarak KBH yaklaşımında güçlü molekül kanıtına dayanıyor. Başlangıçta eGFR ve güncel KÜB koşullarını kontrol ederek uygun hastanızda Calira’yı değerlendirir misiniz?"}}}, "caliramet": {"name": "Calira-Met", "active": "Dapagliflozin + Metformin", "company": "Sanovel", "forms": [{"form": "5/850 mg film kaplı tablet", "pack": "56 tablet", "price": "972,40 TL"}, {"form": "5/1000 mg film kaplı tablet", "pack": "56 tablet", "price": "1.004,83 TL"}], "price_date": "25.09.2026", "competitors": [{"brand": "XIGDUO XR", "company": "AstraZeneca", "detail": "Dapagliflozin + metformin XR; ör. 5/1000, 10/1000", "price": "Dosyada güncel fiyat kaydı yok", "type": "Aynı kombinasyon"}, {"brand": "GLAZONEMET XR", "company": "Santa Farma", "detail": "Dapagliflozin + metformin XR; 5/1000, 10/1000", "price": "879,82 TL", "type": "Aynı kombinasyon"}, {"brand": "DAPAVEL PLUS", "company": "Bilim İlaç", "detail": "Dapagliflozin + metformin 5/1000 / 56", "price": "932,45 TL", "type": "Aynı kombinasyon"}, {"brand": "DAPADAPMET XR", "company": "Sandoz", "detail": "Dapagliflozin + metformin XR; 5/1000, 10/1000", "price": "879,81 TL", "type": "Aynı kombinasyon"}, {"brand": "DAPGEON PLUS XR", "company": "Genveon", "detail": "Dapagliflozin + metformin XR", "price": "—", "type": "Aynı kombinasyon"}, {"brand": "ANERVA XR", "company": "Gürel İlaç", "detail": "Dapagliflozin + metformin 5/1000 / 56", "price": "—", "type": "Aynı kombinasyon"}], "sut": "Kombinasyon ürünlerinde geri ödeme koşulları hastanın mevcut tedavisi ve endikasyona göre değişebilir. Güncel SGK SUT/KÜB kontrolü yapılmalıdır.", "studies": [{"name": "Dapagliflozin + metformin sabit kombinasyon", "type": "Kombinasyon klinik programı", "population": "Tip 2 diyabetli, metformin temeli olan veya başlangıç kombinasyonuna uygun erişkinler", "design": "Dapagliflozin ve metforminin birlikte kullanıldığı glisemik etkinlik çalışmaları.", "result": "Kombinasyon HbA1c düşüşünü ve hedefe ulaşmayı destekler; ürünün klinik mantığı farklı mekanizmaları tek rejimde birleştirmektir.", "field": "Endokrin/Dahiliye'de kombinasyon ihtiyacı ve tedavi sadeleştirme.", "warning": "DAPA-HF/DAPA-CKD sonuçları dapagliflozin molekül kanıtıdır; sabit kombinasyonun KY/KBH endikasyonu gibi anlatılmamalıdır."}, {"name": "DECLARE–TIMI 58 – molekül kanıtı", "type": "Dapagliflozin KV sonuç çalışması", "population": "17.160 Tip 2 diyabetli", "design": "Dapagliflozin vs plasebo.", "result": "Dapagliflozinin kardiyovasküler güvenlilik ve KY yatışı eksenindeki veri omurgası.", "field": "Kombinasyondaki dapagliflozin bileşeninin bilimsel arka planı.", "warning": "Markaya özgü kombinasyon çalışması değildir."}, {"name": "DAPA-CKD – molekül kanıtı", "type": "Dapagliflozin renal sonuç çalışması", "population": "4.304 KBH hastası", "design": "Dapagliflozin vs plasebo.", "result": "Primer renal/KV bileşik sonlanım HR 0,61.", "field": "Renal risk açısından dapagliflozin bileşeninin arka planı.", "warning": "Metformin bileşeni nedeniyle renal uygunluk ayrıca değerlendirilir."}], "scripts": {"Dahiliye": {"focus": "Metformin üzerinde hedef dışı T2D", "text": "Hocam, Tip 2 diyabette metformin temeline rağmen hedefte olmayan hastada iki ayrı tedaviyi karmaşıklaştırmadan ilerlemek önemli. Calira-Met, dapagliflozin ile metformini 5/850 ve 5/1000 mg sabit kombinasyonda sunuyor. Dapagliflozin bileşeninin kardiyorenal veri seti güçlü; kombinasyonun asıl saha mesajı ise uygun Tip 2 diyabet hastasında glisemik tedaviyi sadeleştirmek. Metformin üzerinde hedefte olmayan, kombinasyona ve KÜB’e uygun hastanızda Calira-Met’i değerlendirir misiniz?"}, "Endokrinoloji": {"focus": "Kombinasyon başlama / yoğunlaştırma", "text": "Hocam, Tip 2 diyabette tedavi yoğunlaştırırken hem HbA1c hedefini hem de uzun dönem kardiyorenal riski düşünmek gerekiyor. Calira-Met, dapagliflozin + metformini 5/850 ve 5/1000 mg seçenekleriyle sabit kombinasyonda sunuyor. Dapagliflozin tarafında DECLARE, DAPA-HF ve DAPA-CKD güçlü molekül kanıtı sağlıyor; burada kombinasyon mesajımız uygun hastada iki mekanizmayı tek rejimde buluşturmak. Metformin + SGLT2 kombinasyonuna uygun ilk hastanızda Calira-Met’i değerlendirir misiniz?"}, "Kardiyoloji": {"focus": "T2D eşlik eden KV hasta – kombinasyona uygunluk", "text": "Hocam, diyabeti eşlik eden kardiyoloji hastasında dapagliflozinin kardiyorenal kanıtı önemli; ancak Calira-Met’in mesajını Tip 2 diyabet kombinasyonu çerçevesinde tutuyoruz. Ürün dapagliflozin + metformini sabit kombinasyonda sunuyor. Metformin kullanımı uygun, glisemik yoğunlaştırmaya ihtiyaç duyan Tip 2 diyabetli kardiyoloji hastanızda tedaviyi sadeleştirme seçeneği olarak Calira-Met’i değerlendirir misiniz?"}, "Nefroloji": {"focus": "T2D + renal fonksiyon – metformin uygunluğu", "text": "Hocam, böbrek hastasında sabit kombinasyon seçerken dapagliflozinin renal kanıtı kadar metformin uygunluğu da kritik. DAPA-CKD dapagliflozin için güçlü renal sonuç verisi sağlıyor; Calira-Met ise Tip 2 diyabette dapagliflozin + metformin kombinasyonudur. Bu nedenle eGFR, metformin sınırları ve güncel KÜB mutlaka birlikte değerlendirilmeli. Renal fonksiyonu kombinasyona uygun Tip 2 diyabet hastanızda Calira-Met’i düşünür müsünüz?"}}}, "calirametxr": {"name": "Calira-Met XR", "active": "Dapagliflozin + Metformin XR", "company": "Sanovel", "forms": [{"form": "5/500 mg XR film kaplı tablet", "pack": "56 tablet", "price": "879,82 TL"}, {"form": "5/1000 mg XR film kaplı tablet", "pack": "56 tablet", "price": "879,82 TL"}, {"form": "10/500 mg XR film kaplı tablet", "pack": "28 tablet*", "price": "879,81–879,82 TL"}, {"form": "10/1000 mg XR film kaplı tablet", "pack": "28 tablet", "price": "879,82 TL"}], "price_date": "25.09.2026", "competitors": [{"brand": "XIGDUO XR", "company": "AstraZeneca", "detail": "Dapagliflozin + metformin XR; 5/1000, 10/1000", "price": "Dosyada güncel fiyat kaydı yok", "type": "Aynı kombinasyon"}, {"brand": "GLAZONEMET XR", "company": "Santa Farma", "detail": "Dapagliflozin + metformin XR; 5/1000, 10/1000", "price": "879,82 TL", "type": "Aynı kombinasyon"}, {"brand": "DAPAVEL PLUS", "company": "Bilim İlaç", "detail": "Dapagliflozin + metformin 5/1000 / 56", "price": "932,45 TL", "type": "Aynı kombinasyon"}, {"brand": "DAPADAPMET XR", "company": "Sandoz", "detail": "Dapagliflozin + metformin XR; 5/1000, 10/1000", "price": "879,81 TL", "type": "Aynı kombinasyon"}, {"brand": "DAPGEON PLUS XR", "company": "Genveon", "detail": "Dapagliflozin + metformin XR", "price": "—", "type": "Aynı kombinasyon"}, {"brand": "ANERVA XR", "company": "Gürel İlaç", "detail": "Dapagliflozin + metformin 5/1000 / 56", "price": "—", "type": "Aynı kombinasyon"}], "sut": "Kombinasyon geri ödeme koşulları ve renal uygunluk hasta bazında değişebilir. eGFR, metformin uygunluğu ve tedavi geçmişi için güncel KÜB/KT ve SGK SUT esas alınmalıdır.", "studies": [{"name": "NICE 2026 tedavi algoritması – eğitim materyali özeti", "type": "Kılavuz/algoritma", "population": "Tip 2 diyabetli erişkinler; komorbidite ve eGFR'ye göre ayrım", "design": "Bültende Faz 0 değerlendirmesi: KVH + KBH/eGFR + kırılganlık; ardından bireyselleştirilmiş tedavi.", "result": "Genel yaklaşımda MR metformin + SGLT2 inhibitörü birlikte öne çıkar; renal eşikler ve kırılganlık tedavi seçimini değiştirir.", "field": "Endokrin ve Dahiliye için algoritma konuşması.", "warning": "Kılavuz ile ürün KÜB'ü aynı şey değildir; ürün bazında renal sınırlar KÜB'den kontrol edilir."}, {"name": "5 mg dapagliflozin + metformin XR başlangıç kombinasyonu", "type": "Glisemik etkinlik", "population": "Tip 2 diyabetli başlangıç kombinasyon çalışması", "design": "Dapagliflozin 5 mg + metformin XR kolu.", "result": "Çalışma setinde başlangıca göre HbA1c değişimi yaklaşık -2,1 puan olarak verilir.", "field": "Endokrin için HbA1c ve kombinasyon etkinliği.", "warning": "Hasta profili ve karşılaştırıcı ayrıntıları KÜB tablosundan gösterilmelidir."}, {"name": "10 mg dapagliflozin + metformin XR", "type": "Glisemik hedef analizi", "population": "Tip 2 diyabetli kombinasyon hastaları", "design": "Dapagliflozin 10 mg + metformin XR kolu.", "result": "Çalışma setinde HbA1c <%7 hedefine ulaşan başlangıca göre düzeltilmiş oran yaklaşık %46,6.", "field": "Endokrin/Dahiliye için hedefe ulaşma mesajı.", "warning": "Sayısal detay sunulurken güncel onaylı materyal esas alınmalıdır."}, {"name": "Ürün stratejisi – polifarmasi/uyum", "type": "Saha strateji verisi", "population": "Çoklu ilaç kullanan uygun Tip 2 diyabet hastası", "design": "Tek tablette iki etkin madde; farklı metformin/dapagliflozin doz kombinasyonları.", "result": "Bültende polifarmasinin azaltılması, hasta uyumunun ve tedavi başarısının desteklenmesi ana ürün mesajıdır.", "field": "Dahiliye/Endokrin kapanış mesajı.", "warning": "Uyum mesajı klinik sonlanım üstünlüğü olarak sunulmamalıdır."}], "scripts": {"Dahiliye": {"focus": "Polifarmasi + tedavi sadeleştirme", "text": "Hocam, Tip 2 diyabette çoklu ilaç kullanan hastada tedaviyi sadeleştirmek günlük pratikte ciddi fark yaratabiliyor. Calira-Met XR, dapagliflozin ile uzatılmış salımlı metformini 5/500, 5/1000, 10/500 ve 10/1000 mg seçenekleriyle tek kombinasyonda sunuyor. Bültende temel mesaj polifarmasiyi azaltmak ve hasta uyumunu desteklemek. eGFR ve metformin uygunluğunu kontrol ederek, kombinasyona uygun hastanızda Calira-Met XR’ı değerlendirir misiniz?"}, "Endokrinoloji": {"focus": "Erken kombinasyon + doz esnekliği", "text": "Hocam, Tip 2 diyabette erken ve yoğunlaştırılmış yaklaşımda SGLT2 inhibitörü + metformin kombinasyonu öne çıkıyor. Calira-Met XR dört doz kombinasyonu sunuyor; çalışma setinde 5 mg dapagliflozin + metformin XR kolunda HbA1c değişimi yaklaşık -2,1 puan, 10 mg kombinasyon kolunda HbA1c yüzde 7 altına ulaşma oranı yaklaşık yüzde 46,6 olarak veriliyor. Doz ihtiyacı ve renal uygunluğu karşılayan hastanızda Calira-Met XR’ı değerlendirir misiniz?"}, "Kardiyoloji": {"focus": "T2D + KV komorbidite, ama ürün T2D kombinasyonu", "text": "Hocam, Tip 2 diyabeti olan kardiyoloji hastasında dapagliflozinin kardiyorenal kanıtı güçlü; fakat Calira-Met XR mesajını doğru yerde tutmak önemli. Bu ürün Tip 2 diyabet için dapagliflozin + XR metformin sabit kombinasyonudur; kalp yetersizliği verisini doğrudan kombinasyon endikasyonu gibi taşımıyoruz. Metformin kullanımı uygun ve glisemik yoğunlaştırmaya ihtiyaç duyan kardiyoloji hastanızda tedaviyi sadeleştirmek için Calira-Met XR’ı değerlendirir misiniz?"}, "Nefroloji": {"focus": "eGFR + metformin sınırı + kombinasyon", "text": "Hocam, renal hastada sabit kombinasyon seçiminin kilidi eGFR ve metformin uygunluğu. Bültendeki algoritmada eGFR ve KBH riski tedavi öncesi temel değerlendirme olarak yer alıyor. Calira-Met XR dapagliflozin + XR metformin içerdiği için dapagliflozin renal kanıtının yanında metformin sınırlarına da uymamız gerekiyor. Güncel KÜB’e göre renal fonksiyonu uygun Tip 2 diyabet hastanızda Calira-Met XR’ı değerlendirir misiniz?"}}}, "ator": {"name": "Ator", "active": "Atorvastatin", "company": "Sanovel", "forms": [{"form": "10 mg film tablet", "pack": "30 tablet", "price": "175,54 TL"}, {"form": "10 mg film tablet", "pack": "90 tablet", "price": "518,00 TL"}, {"form": "20 mg film tablet", "pack": "30 tablet", "price": "281,22 TL"}, {"form": "20 mg film tablet", "pack": "90 tablet", "price": "518,00 TL"}, {"form": "40 mg film tablet", "pack": "30 tablet", "price": "334,96 TL"}, {"form": "40 mg film tablet", "pack": "90 tablet", "price": "518,00 TL"}, {"form": "80 mg film tablet", "pack": "30 tablet", "price": "426,26 TL"}, {"form": "80 mg film tablet", "pack": "90 tablet", "price": "669,29 TL"}], "price_date": "14.09.2026", "competitors": [{"brand": "LIPITOR", "company": "Viatris", "detail": "Atorvastatin 10 / 20 / 40 / 80 mg", "price": "20 mg / 90 tb: 517,97 TL", "type": "Aynı molekül"}, {"brand": "TARDEN", "company": "Abdi İbrahim", "detail": "Atorvastatin 10 / 20 / 40 / 80 mg", "price": "20 mg / 30 tb: 281,22 TL", "type": "Aynı molekül"}, {"brand": "ALVASTIN", "company": "Ali Raif", "detail": "Atorvastatin 10 / 20 / 40 / 80 mg", "price": "40 mg / 30 tb: 334,96 TL", "type": "Aynı molekül"}, {"brand": "ATEROZ", "company": "Bilim İlaç", "detail": "Atorvastatin 10 / 20 / 40 / 80 mg", "price": "40 mg / 30 tb: 334,96 TL", "type": "Aynı molekül"}, {"brand": "LIPIDRA", "company": "Nobel", "detail": "Atorvastatin 10 / 20 / 40 / 80 mg", "price": "40 mg / 30 tb: 803,15 TL", "type": "Aynı molekül"}, {"brand": "KOLESTOR", "company": "Sanofi", "detail": "Atorvastatin 10 / 20 / 40 / 80 mg", "price": "—", "type": "Aynı molekül"}, {"brand": "LIPITAKSIN", "company": "Actavis", "detail": "Atorvastatin 10 / 20 / 40 mg ve diğer formlar", "price": "—", "type": "Aynı molekül"}, {"brand": "AMVASTAN", "company": "World Medicine", "detail": "Atorvastatin 10 / 20 mg ve diğer formlar", "price": "—", "type": "Aynı molekül"}, {"brand": "SAPHIRE", "company": "Aset", "detail": "Atorvastatin 10 / 20 / 40 / 80 mg", "price": "—", "type": "Aynı molekül"}], "sut": "LDL-K >190 mg/dL: ek risk faktörü aranmadan. >160: 2 ek risk faktörü. >130: 3 ek risk faktörü. >70: diabetes mellitus veya belirlenmiş KVH varsa. 160/130 için ek risk faktörleri: hipertansiyon, ailede erken KVH öyküsü, ≥65 yaş. İlk rapor öncesi LDL ölçüm ayrıntıları ve tedavi arası kuralları için güncel SUT esas alınır.", "studies": [{"name": "CARDS", "type": "Primer korunma – Tip 2 diyabet", "population": "2.838 Tip 2 diyabetli; bilinen KVH olmadan ek risk faktörü bulunan hasta", "design": "Atorvastatin 10 mg vs plasebo; çalışma erken sonlandırıldı.", "result": "Bültendeki hızlı mesaj: majör KV olay %37, inme %48, tüm nedenlere bağlı ölüm %27 azalma.", "field": "Dahiliye ve Endokrin için ana çalışma.", "warning": "Yüzdeleri bağlamıyla ve primer korunma popülasyonuyla birlikte söyle."}, {"name": "ASCOT-LLA", "type": "Primer korunma – hipertansiyon", "population": "Hipertansiyon + çoklu KV risk faktörü olan hastalar", "design": "Atorvastatin 10 mg vs plasebo; erken sonlandırılan çalışma.", "result": "Fatal KKH + nonfatal MI riskini belirgin azalttı; erken statin kullanımını destekleyen temel kanıtlardan.", "field": "Dahiliye/Kardiyoloji risk hastası.", "warning": "Çalışma popülasyonu ve başlangıç lipid düzeyi bağlamı korunmalı."}, {"name": "TNT", "type": "Yoğun vs standart atorvastatin", "population": "Stabil koroner kalp hastalığı", "design": "Atorvastatin 80 mg vs 10 mg.", "result": "Daha yoğun LDL düşüşü majör kardiyovasküler olayları azalttı; yüksek dozda karaciğer enzim yükselmesi daha sık görüldü.", "field": "Kardiyoloji – hedef LDL ve tedavi yoğunluğu.", "warning": "Doz seçimi tolerabilite ve güncel kılavuza göre."}, {"name": "IDEAL", "type": "Yoğun lipid düşürme", "population": "Geçirilmiş MI hastaları", "design": "Atorvastatin 80 mg vs simvastatin 20–40 mg.", "result": "Primer majör koroner sonlanımda fark sınırda/istatistiksel olarak anlamlı değildi; bazı sekonder koroner sonlanımlar yoğun tedaviyi destekledi.", "field": "Kardiyoloji – yüksek riskli sekonder korunma.", "warning": "Çalışmayı 'primer sonlanımda kesin üstünlük' diye sunma."}, {"name": "SPARCL", "type": "İnme/TIA sonrası sekonder korunma", "population": "Yakın dönemde inme veya TIA; bilinen KKH olmayan hastalar", "design": "Atorvastatin 80 mg vs plasebo.", "result": "Fatal/nonfatal inme riskinde azalma sağladı; hemorajik inme sinyali nedeniyle hasta seçimi önemlidir.", "field": "Nöroloji – serebrovasküler risk.", "warning": "Hemorajik inme riski ve bireysel değerlendirme göz ardı edilmemeli."}, {"name": "MIRACL", "type": "Akut koroner sendrom – erken tedavi", "population": "Yeni akut koroner sendrom hastaları", "design": "Atorvastatin 80 mg erken başlandı vs plasebo; kısa dönem takip.", "result": "Erken dönemde tekrarlayan iskemik olayların bileşik riskinde azalma gösterdi.", "field": "Kardiyoloji – ACS sonrası erken yoğun statin.", "warning": "Güncel ACS kılavuzları ve hasta tolerabilitesi esas."}, {"name": "PROVE IT–TIMI 22", "type": "ACS sonrası yoğun statin", "population": "Yakın dönemde akut koroner sendrom", "design": "Atorvastatin 80 mg vs pravastatin 40 mg.", "result": "Yoğun LDL düşürme stratejisi klinik olayları azaltarak 'daha erken, daha düşük LDL' yaklaşımını destekledi.", "field": "Kardiyoloji – sekonder korunma.", "warning": "Karşılaştırma iki farklı statin/intensite stratejisidir."}, {"name": "Böbrek yetmezliği / renal doz mesajı", "type": "Farmakokinetik saha mesajı", "population": "Böbrek fonksiyon bozukluğu olan dislipidemik hastalar", "design": "Atorvastatin karaciğerde metabolize edilir, safra ile atılır.", "result": "Bültende böbrek yetersizliği seviyelerinde doz ayarlaması gerektirmediği vurgulanır.", "field": "Nefroloji.", "warning": "Hastanın genel güvenlilik değerlendirmesi ve KÜB uyarıları yine geçerlidir."}], "scripts": {"Kardiyoloji": {"focus": "Sekonder korunma + LDL yoğunluğu", "text": "Hocam, aterosklerotik riskte en kritik noktalardan biri hedef LDL’ye gecikmeden ulaşmak. TNT ve PROVE IT gibi çalışmalar yoğun atorvastatin tedavisinin yüksek riskli koroner hastada daha düşük LDL ve daha az klinik olay yaklaşımını desteklediğini gösteriyor. Ator 10, 20, 40 ve 80 mg; 30 ve 90 tablet seçenekleriyle doz titrasyonuna geniş alan bırakıyor. SUT’ta yerleşik KVH varlığında LDL-K 70 mg/dL üzeri eşik önemli. Hedefin üzerinde kalan uygun hastanızda Ator’u değerlendirir misiniz?"}, "Dahiliye": {"focus": "Tip 2 DM + primer korunma", "text": "Hocam, Tip 2 diyabetli hastada kardiyovasküler risk olay olmadan önce başlıyor. CARDS verisinde 10 mg atorvastatinle majör KV olaylarda yüzde 37, inmede yüzde 48 ve tüm nedenlere bağlı ölümde yüzde 27 azalma mesajı öne çıkıyor. SUT’ta diyabet varlığında LDL-K 70 mg/dL üzeri eşik önemli. Ator’un 10’dan 80 mg’a kadar doz seçenekleri var. Uygun diyabetik hastanızda statini geciktirmeden Ator’u değerlendirir misiniz?"}, "Endokrinoloji": {"focus": "Diyabetik dislipidemi", "text": "Hocam, diyabette HbA1c kadar LDL yönetimi de kardiyovasküler korunmanın temel parçası. CARDS, 10 mg atorvastatinle Tip 2 diyabette primer korunmada majör KV olay yüzde 37 ve inme yüzde 48 azalma mesajıyla güçlü bir hatırlatma. SUT’ta diabetes mellitus varlığında LDL-K 70 mg/dL üzeri kriteri öne çıkıyor. Hedef LDL’nin üzerinde kalan uygun diyabetik hastanızda Ator’u doz ihtiyacına göre değerlendirir misiniz?"}, "Nefroloji": {"focus": "KBH + lipid yönetimi", "text": "Hocam, kronik böbrek hastasında kardiyovasküler risk yüksek; statin seçiminde renal doz karmaşası da pratik bir sorun. Atorvastatin karaciğerde metabolize oluyor ve bültende böbrek yetersizliği seviyelerinde renal doz ayarlaması gerekmediği özellikle vurgulanıyor. Ator’un 10, 20, 40 ve 80 mg seçenekleriyle LDL hedefi doğrultusunda titrasyon yapılabiliyor. Lipid tedavisi gereken uygun KBH hastanızda Ator’u değerlendirir misiniz?"}, "Nöroloji": {"focus": "İnme/TIA sonrası lipid yönetimi", "text": "Hocam, inme veya TIA sonrası tekrar olay riskini azaltmada LDL kontrolü önemli. SPARCL çalışmasında yüksek doz atorvastatin, yakın dönemde inme/TIA geçirmiş ve bilinen koroner hastalığı olmayan hastalarda fatal/nonfatal inme riskini azalttı; hemorajik inme sinyali nedeniyle hasta seçimi ve bireysel risk değerlendirmesi önemli. Ator 10–80 mg doz seçenekleri sunuyor. İskemik serebrovasküler olay sonrası statine uygun hastanızda Ator’u değerlendirir misiniz?"}}}, "venomia": {"name": "Venomia", "active": "Rivaroksaban", "company": "Sanovel", "forms": [{"form": "10 mg sert kapsül", "pack": "10 kapsül", "price": "451,28 TL"}, {"form": "15 mg kapsül", "pack": "28 kapsül", "price": "1.140,10 TL"}, {"form": "20 mg kapsül", "pack": "28 kapsül", "price": "1.140,10 TL"}], "price_date": "14.09.2026", "competitors": [{"brand": "XARELTO", "company": "Bayer", "detail": "Rivaroksaban 10 / 15 / 20 mg", "price": "Referans/orijinal marka; aktif barkod güncel fiyatı ayrıca kontrol", "type": "Aynı molekül"}, {"brand": "RIVOKSAR", "company": "Abdi İbrahim", "detail": "Rivaroksaban 10 / 15 / 20 mg", "price": "15–20 mg ~1.139,39 TL", "type": "Aynı molekül"}, {"brand": "ROVARAN", "company": "Sandoz", "detail": "Rivaroksaban 15 / 20 mg", "price": "1.083,43 TL", "type": "Aynı molekül"}, {"brand": "VENMIX", "company": "Santa Farma", "detail": "Rivaroksaban 15 / 20 mg", "price": "1.138,02 TL", "type": "Aynı molekül"}, {"brand": "VOXABAN", "company": "Nobel", "detail": "Rivaroksaban 10 / 15 / 20 mg", "price": "15–20 mg 1.135,86 TL", "type": "Aynı molekül"}, {"brand": "ONAXAN", "company": "Ali Raif", "detail": "Rivaroksaban 15 / 20 mg", "price": "1.029,05 TL", "type": "Aynı molekül"}, {"brand": "RIVAROGARD", "company": "Atabay", "detail": "Rivaroksaban 15 / 20 mg", "price": "1.136,27 TL", "type": "Aynı molekül"}, {"brand": "RIVELTO", "company": "Atabay", "detail": "Rivaroksaban 15 / 20 mg", "price": "1.136,27 TL", "type": "Aynı molekül"}, {"brand": "TROMABAN", "company": "Farma-Tek", "detail": "Rivaroksaban 15 / 20 mg", "price": "1.136,96 TL", "type": "Aynı molekül"}, {"brand": "VORELBAN", "company": "Vem İlaç", "detail": "Rivaroksaban 10 / 15 / 20 mg", "price": "15–20 mg 1.138,02 TL", "type": "Aynı molekül"}], "sut": "Rivaroksaban geri ödeme ve doz koşulları endikasyon, renal fonksiyon, yaş ve eşlik eden risklere göre değişebilir. Güncel KÜB/KT ve SGK SUT saha öncesi kontrol edilmelidir.", "studies": [{"name": "İtalya Ulusal Farmakovijilans gerçek yaşam verisi", "type": "Gözlemsel farmakovijilans", "population": "2017–2021 döneminde 6.245 DOAK hastası", "design": "Rivaroksaban, apiksaban ve edoksabanın bildirilen güvenlilik profilleri karşılaştırıldı.", "result": "Bültende rivaroksaban ve apiksaban ciddi/Gİ yan etki açısından güvenli profil; rivaroksaban için daha düşük İKK yan etki oranı ve en düşük risk indeksi mesajı öne çıkarılıyor.", "field": "Kardiyoloji/Dahiliye – güvenlilik konuşması.", "warning": "Randomize çalışma değildir; bildirim temelli gerçek yaşam verisidir."}, {"name": "ANATOLIA-AF", "type": "Retrospektif gözlemsel – Türkiye", "population": "26 merkez, 1.162 AF hastası", "design": "Rivaroksaban, apiksaban, edoksaban karşılaştırması.", "result": "İskemik inme/GİA/SE: 2,2 / 4,7 / 6,5 (p=0,014); tüm nedenlere bağlı ölüm: 9,8 / 15,1 / 12,4 (p=0,042); net klinik sonuç: 13,8 / 19,6 / 20,6 (p=0,019).", "field": "Kardiyoloji/Nöroloji – Türkiye gerçek yaşam verisi.", "warning": "Retrospektif gözlemseldir; nedensellik/üstünlük dili dikkatle kullanılmalı."}, {"name": "Coleman ve ark. 2021", "type": "Gerçek yaşam karşılaştırması", "population": "Yaklaşık 120.000 Tip 2 DM + NVAF hastası", "design": "Rivaroksaban ve varfarin karşılaştırması.", "result": "Bültendeki mesaj: inme+SE+vasküler ölüm %9, sistemik emboli %18, intrakraniyal kanama %28, majör kanama %20 azalma.", "field": "Dahiliye/Kardiyoloji – diyabetik NVAF.", "warning": "Gerçek yaşam verisidir; hasta özellikleri ve rezidüel karıştırıcılar dikkate alınır."}, {"name": "ROCKET AF", "type": "Randomize NVAF", "population": "14.264 yüksek riskli non-valvüler AF hastası", "design": "Rivaroksaban vs varfarin.", "result": "İnme/sistemik emboli önlenmesinde warfarine karşı non-inferior; intrakraniyal ve fatal kanamalar daha az, Gİ kanama daha fazla görüldü.", "field": "Kardiyoloji/Nöroloji – NVAF kanıt omurgası.", "warning": "Doz renal fonksiyona göre KÜB'e uygun seçilir."}, {"name": "EINSTEIN-DVT", "type": "Randomize VTE tedavisi", "population": "Akut semptomatik DVT", "design": "Tek ilaç rivaroksaban stratejisi vs enoksaparin + VKA.", "result": "Rekürren VTE açısından standart tedaviye non-inferior; klinik olarak anlamlı kanama profili benzer.", "field": "Kalp Damar Cerrahisi/Dahiliye – DVT.", "warning": "Tedavi fazına göre doz şeması KÜB'den gösterilmeli."}, {"name": "EINSTEIN-PE", "type": "Randomize VTE tedavisi", "population": "Akut semptomatik PE", "design": "Rivaroksaban vs enoksaparin + VKA.", "result": "Rekürren VTE açısından non-inferior; majör kanama rivaroksaban kolunda daha düşük bulundu.", "field": "Kalp Damar Cerrahisi/Dahiliye – PE.", "warning": "Hemodinamik instabil PE gibi özel durumlar ayrı değerlendirilir."}, {"name": "EINSTEIN-Extension", "type": "Uzatılmış VTE korunması", "population": "İlk antikoagülasyonunu tamamlamış VTE hastaları", "design": "Rivaroksaban vs plasebo.", "result": "Rekürren VTE’yi belirgin azalttı; uzatılmış antikoagülasyonda yarar-risk dengesini ortaya koydu.", "field": "VTE rekürrens önleme.", "warning": "Uzatma kararı kanama riskiyle birlikte verilir."}, {"name": "EINSTEIN-CHOICE", "type": "Uzatılmış VTE korunması", "population": "6–12 aylık antikoagülasyon sonrası devam kararı gereken hastalar", "design": "Rivaroksaban 10 mg veya 20 mg vs aspirin 100 mg.", "result": "Her iki rivaroksaban dozu da rekürren VTE’yi aspirinden daha fazla azalttı; majör kanama oranları düşük ve benzer aralıktaydı.", "field": "Dahiliye/KVC – uzatılmış koruma.", "warning": "Hangi dozun seçileceği bireysel rekürrens/kanama riskine göre."}, {"name": "RECORD 1–4", "type": "Ortopedik cerrahi VTE profilaksisi – molekül programı", "population": "Elektif total kalça veya diz artroplastisi sonrası hastalar", "design": "Rivaroksaban ve enoksaparin profilaksi rejimleri karşılaştırıldı.", "result": "Program genelinde rivaroksaban total VTE/majör VTE sonlanımlarında etkili profilaksi gösterdi.", "field": "Ortopedi/KVC için rivaroksaban molekül kanıtı.", "warning": "Venomia 10 mg'ın güncel ürün endikasyonu ve geri ödeme durumu ayrıca KÜB/SUT üzerinden teyit edilmelidir."}, {"name": "COMPASS", "type": "Stabil aterosklerotik hastalık – molekül kanıtı", "population": "Stabil KAH/PAD", "design": "Rivaroksaban 2,5 mg günde 2 + aspirin vs aspirin.", "result": "KV ölüm/inme/MI birleşik sonlanımını azalttı; majör kanama arttı, fatal/intrakraniyal kanama belirgin artmadı.", "field": "PAD/KAH bilimsel arka planı.", "warning": "2,5 mg rejimi mevcut Venomia 10/15/20 mg formlarıyla aynı değildir; marka mesajına dönüştürülmemelidir."}, {"name": "VOYAGER PAD", "type": "Alt ekstremite revaskülarizasyonu – molekül kanıtı", "population": "Semptomatik PAD sonrası revaskülarizasyon", "design": "Rivaroksaban 2,5 mg günde 2 + aspirin vs aspirin.", "result": "Akut ekstremite iskemisi, majör amputasyon, MI, iskemik inme veya KV ölüm bileşiğini azalttı; bazı majör kanama tanımlarında artış oldu.", "field": "KVC/PAD bilimsel arka planı.", "warning": "2,5 mg rejimi Venomia mevcut dozlarıyla birebir değildir."}, {"name": "ATLAS ACS 2–TIMI 51", "type": "ACS sonrası – molekül kanıtı", "population": "Yakın dönem akut koroner sendrom", "design": "Düşük doz rivaroksaban + antiplatelet tedavi vs plasebo.", "result": "KV ölüm/MI/inme birleşik sonlanımını azalttı; majör ve intrakraniyal kanamayı artırdı.", "field": "Kardiyoloji bilimsel arka planı.", "warning": "Kullanılan 2,5/5 mg rejimler mevcut Venomia 10/15/20 mg ürün mesajıyla karıştırılmamalıdır."}], "scripts": {"Kardiyoloji": {"focus": "NVAF – etkinlik + güvenlilik", "text": "Hocam, NVAF’da karar verirken yalnız inme riskine değil net klinik sonuca ve kanama güvenliliğine birlikte bakıyoruz. Türkiye’deki ANATOLIA-AF, 26 merkez ve 1.162 hastalık retrospektif gözlemsel veri; bültende net klinik sonuç rivaroksaban/apiksaban/edoksaban için 13,8 / 19,6 / 20,6, p=0,019 olarak veriliyor. ROCKET AF ise rivaroksabanın randomize NVAF kanıt omurgası. Venomia 15 ve 20 mg, güncel KÜB’e uygun NVAF hastasında değerlendirilebilecek rivaroksaban seçenekleri. Uygun hastanızda Venomia’yı düşünür müsünüz?"}, "Dahiliye": {"focus": "Diyabetik NVAF + polifarmasi", "text": "Hocam, diyabetik NVAF hastasında tromboembolik risk ve kanama riskini aynı anda yönetmek gerekiyor. Coleman 2021 gerçek yaşam analizinde yaklaşık 120 bin Tip 2 diyabetli NVAF hastasında bültene göre rivaroksaban, varfarine kıyasla sistemik emboliyi yüzde 18, intrakraniyal kanamayı yüzde 28, majör kanamayı yüzde 20 azaltmış. Venomia için bültende kullanım kolaylığı ve hasta uyumu da öne çıkıyor. Güncel KÜB ve renal fonksiyon açısından uygun NVAF hastanızda Venomia’yı değerlendirir misiniz?"}, "Nöroloji": {"focus": "NVAF – inme/SE önleme", "text": "Hocam, NVAF’da en kritik hedeflerden biri iskemik inme ve sistemik emboliyi önlemek. ANATOLIA-AF gözlemsel verisinde iskemik inme/GİA/SE oranları rivaroksaban, apiksaban ve edoksaban için 2,2 / 4,7 / 6,5; p=0,014. ROCKET AF de rivaroksabanın randomize AF kanıtını oluşturuyor. Venomia, güncel KÜB çerçevesinde NVAF’a bağlı inme ve sistemik emboli önleme yaklaşımında değerlendirilebilir. Kanama riski ve renal fonksiyonu uygun hastanızda Venomia’yı düşünür müsünüz?"}, "Kalp Damar Cerrahisi": {"focus": "DVT/PE tedavisi + rekürrens", "text": "Hocam, VTE hastasında hedef yalnız akut trombozu tedavi etmek değil, rekürren DVT ve PE riskini de azaltmak. EINSTEIN-DVT ve EINSTEIN-PE rivaroksabanın tek ilaç VTE tedavi stratejisinin kanıt omurgasını; EINSTEIN-CHOICE ise uzatılmış korumada rivaroksabanın aspirine üstün VTE rekürrens azalmasını gösteriyor. Venomia bülteninde DVT/PE tedavisi ve rekürrens önlenmesi temel kullanım mesajları arasında. Tedavi fazına ve renal/kanama riskine göre KÜB doz şemasıyla uygun hastanızda Venomia’yı değerlendirir misiniz?"}, "Ortopedi": {"focus": "Artroplasti sonrası VTE profilaksisi – doğrulama gerekli", "text": "Hocam, total kalça ve diz artroplastisi sonrası VTE profilaksisinde rivaroksabanın RECORD 1–4 programı güçlü bir molekül kanıtı oluşturuyor. Venomia’nın 10 mg formu mevcut; ancak bu alanda saha mesajını kullanmadan önce Venomia 10 mg’ın güncel KÜB endikasyonu ve SGK geri ödeme durumunu aktif barkod üzerinden doğrulamak gerekiyor. KÜB onayı mevcutsa, uygun postoperatif hastada rivaroksaban profilaksi yaklaşımını Venomia üzerinden konuşabiliriz."}}}};
+const app=document.getElementById('app'); let cur=null, spec=null, tab='60sn';
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+function home(){
+ cur=null;spec=null;tab='60sn';
+ app.innerHTML=`<section class="hero"><h2>İlaç → uzmanlık → 60 saniye.</h2><p>Her ürün için ayrı doktor konuşması; çalışmanın ne olduğu, kimlerde yapıldığı ve sonucu; form-fiyat ve rakipler tek yerde.</p></section>
+ <h3 class="section-title">Ürünler</h3><div class="grid">${Object.entries(DATA).map(([id,p])=>`<div class="card product" onclick="openProduct('${id}')"><div><div class="name">${p.name}</div><div class="active">${p.active}</div></div><div><span class="badge">${p.forms.length} form</span><span class="badge">${p.studies.length} çalışma</span><span class="badge">${p.competitors.length} rakip</span></div></div>`).join('')}</div>
+ <h3 class="section-title">Hızlı giriş</h3><div class="quick-grid"><button class="primary" onclick="quick()">⚡ Uzmanlık Seç / 60 sn</button><button onclick="studiesAll()">▤ Tüm Çalışmalar</button><button onclick="pricesAll()">₺ Form & Fiyat</button><button onclick="competitorsAll()">⇄ Rakipler</button></div>
+ <div class="notice" style="margin-top:14px"><b>Saha güvenliği:</b> Çalışma tasarımını doğru söyle; gözlemsel veriyi randomize çalışma gibi sunma. Molekül kanıtını sabit kombinasyonun doğrudan endikasyonu gibi taşıma. Fiyat/SUT ve KÜB bilgilerini saha günü güncel kaynaktan tekrar doğrula.</div>`;
 }
-
-function openProduct(id,tab='ozet'){
- current=id; currentTab=tab; const p=PRODUCTS[id];
- app.innerHTML=`
-   <button class="btn secondary" onclick="goHome()">← Ana sayfa</button>
-   <div class="card" style="margin-top:10px">
-    <div style="display:flex;justify-content:space-between;gap:10px;align-items:start">
-      <div><div class="name" style="font-size:24px;font-weight:850">${p.name}</div><div class="active">${p.active}</div></div>
-      <span class="badge">${p.area}</span>
-    </div>
-   </div>
-   <div class="tabs">
-     ${[['ozet','Özet'],['calismalar','Çalışmalar'],['nice','NICE / Kılavuz'],['saha','60 Saniye'],['fiyat','Fiyat / SUT'],['not','Notlar']].map(x=>`<button class="tab ${tab===x[0]?'active':''}" onclick="openProduct('${id}','${x[0]}')">${x[1]}</button>`).join('')}
-   </div>
-   <div id="tabBody">${tabContent(id,tab)}</div>
- `;
+function specs(p){return Object.keys(p.scripts)}
+function openProduct(id,t='60sn'){
+ cur=id;tab=t;const p=DATA[id]; if(!spec||!p.scripts[spec]) spec=specs(p)[0];
+ app.innerHTML=`<button class="back" onclick="home()">← Ana sayfa</button>
+ <div class="card" style="margin-top:10px"><div class="name" style="font-size:25px">${p.name}</div><div class="active">${p.active} • ${p.company}</div><div style="margin-top:8px">${specs(p).map(s=>`<span class="badge">${s}</span>`).join('')}</div></div>
+ <div class="tabs">${[['60sn','60 Saniye'],['calisma','Çalışmalar'],['form','Form / Fiyat'],['rakip','Rakipler'],['sut','SUT / Not']].map(x=>`<button class="tab ${t===x[0]?'active':''}" onclick="openProduct('${id}','${x[0]}')">${x[1]}</button>`).join('')}</div>
+ ${renderTab(id,t)}`;
 }
-function tabContent(id,tab){
- const p=PRODUCTS[id];
- if(tab==='ozet') return `<div class="card">
-   <div class="row"><div class="label">Ürün</div><div class="value">${p.name}</div></div>
-   <div class="row"><div class="label">Firma</div><div class="value">${p.company}</div></div>
-   <div class="row"><div class="label">Etkin madde</div><div class="value">${p.active}</div></div>
-   <div class="row"><div class="label">Tedavi alanı</div><div class="value">${p.area}</div></div>
-   <div class="row"><div class="label">Formlar</div><div class="value">${p.forms.join('<br>')}</div></div>
-   <div class="row source"><div class="label">Resmi ürün kaynağı</div><div class="value"><a target="_blank" href="${p.source.url}">${p.source.label} ↗</a></div></div>
- </div>`;
- if(tab==='calismalar') return `<div class="ok"><b>Not:</b> Ticari marka ile molekül kanıtını birbirine karıştırmamak için çalışma adları “molekül kanıtı” şeklinde işaretlenebilir. Sayısal sonuçlar doğrulanmadan eklenmemiştir.</div>
- <div style="margin-top:10px">${p.studies.map(s=>`<div class="study"><b>${esc(s)}</b><small>Detay: hasta grubu, hasta sayısı, primer sonlanım, HR/GA, sonuç ve kaynak alanları doğrulama sonrası eklenebilir.</small></div>`).join('')}</div>`;
- if(tab==='nice') return `<div class="card">
-   ${p.nice.length?p.nice.map(n=>`<div class="study"><b>${n[0]} — ${n[1]}</b><div class="source"><a target="_blank" href="${n[2]}">NICE resmi sayfasını aç ↗</a></div></div>`).join(''):'<div class="notice">Bu ürün için NICE kaydı eklenmemiş.</div>'}
- </div>`;
- if(tab==='saha'){
-  const points=getStored(id,'quick','');
-  return `<div class="card">
-   <h3 style="margin-top:0">60 Saniye Saha Kartı</h3>
-   <div class="notice">Buraya yalnızca güncel KÜB/SUT ile doğruladığın mesajları yaz. Kaydedilen metin bu iPhone'da kalır.</div>
-   <label class="label">3 ana mesaj / kapanış</label>
-   <textarea id="quickText" placeholder="Örn. 1) ...&#10;2) ...&#10;3) ...&#10;Kapanış: ...">${esc(points)}</textarea>
-   <button class="btn primary" style="margin-top:8px" onclick="saveQuick('${id}')">Kaydet</button>
-  </div>`;
- }
- if(tab==='fiyat'){
-  const price=getStored(id,'price',''), sut=getStored(id,'sut',''), date=getStored(id,'date','');
-  return `<div class="card">
-    <h3 style="margin-top:0">Fiyat / SUT</h3>
-    <div class="notice">Fiyat ve SUT hızlı değişebilir. Kaynağı ve tarihi olmadan saha mesajına dönüştürme.</div>
-    <label class="label">Güncel fiyat</label><input class="data" id="price" value="${esc(price)}" placeholder="Örn. 000,00 TL">
-    <label class="label">SUT / geri ödeme notu</label><textarea id="sut" placeholder="Güncel resmi SUT özetini buraya yaz">${esc(sut)}</textarea>
-    <label class="label">Son kontrol tarihi</label><input class="data" id="date" value="${esc(date)}" placeholder="GG.AA.YYYY">
-    <button class="btn primary" style="margin-top:8px" onclick="savePrice('${id}')">Kaydet</button>
-  </div>`;
- }
- if(tab==='not'){
-  const note=getStored(id,'note','');
-  return `<div class="card"><h3 style="margin-top:0">Kişisel Saha Notu</h3>
-   <textarea id="noteText" placeholder="Örn. Bu hekim renal veriyi soruyor...">${esc(note)}</textarea>
-   <button class="btn primary" style="margin-top:8px" onclick="saveNote('${id}')">Notu Kaydet</button>
-  </div>`;
- }
- return '';
+function renderTab(id,t){
+ const p=DATA[id];
+ if(t==='60sn') return `<div class="panel"><b>Uzman hekimi seç</b><div style="margin-top:8px">${specs(p).map(s=>`<button class="spec ${s===spec?'active':''}" onclick="chooseSpec('${id}',${JSON.stringify(s)})">${s}</button>`).join('')}</div></div>${scriptCard(id,spec)}`;
+ if(t==='calisma') return `<div class="ok" style="margin-bottom:10px"><b>Her çalışmada:</b> tasarım + hasta grubu + sonuç + sahada ne işe yarar + dikkat noktası var.</div>${p.studies.map(studyCard).join('')}`;
+ if(t==='form') return `<div class="card"><h3 style="margin-top:0">Formlar ve fiyatlar</h3><div class="ok">Fiyat kontrol tarihi: <b>${p.price_date}</b></div>${p.forms.map(x=>`<div class="row"><div><b>${x.form}</b><div class="muted">${x.pack}</div></div><div class="value">${x.price}</div></div>`).join('')}${p.name==='Calira-Met XR'?'<div class="notice">* 10/500 mg kutu adedi bazı veri tabanlarında farklı görünebildiğinden barkod/ruhsat kaydı saha günü tekrar kontrol edilmelidir.</div>':''}</div>`;
+ if(t==='rakip') return `<div class="card"><h3 style="margin-top:0">Rakipler</h3>${p.competitors.map(compCard).join('')}</div>`;
+ if(t==='sut') return `<div class="card"><h3 style="margin-top:0">SUT / geri ödeme saha notu</h3><div class="notice">${esc(p.sut)}</div><div class="danger" style="margin-top:10px">Bu bölüm reçete kararı vermez. Güncel SGK SUT, KÜB/KT ve kurumunuzun onaylı tanıtım materyali esastır.</div></div>`;
 }
-function saveQuick(id){setStored(id,'quick',document.getElementById('quickText').value);toast('60 saniye kartı kaydedildi')}
-function savePrice(id){setStored(id,'price',document.getElementById('price').value);setStored(id,'sut',document.getElementById('sut').value);setStored(id,'date',document.getElementById('date').value);toast('Fiyat/SUT kaydedildi')}
-function saveNote(id){setStored(id,'note',document.getElementById('noteText').value);toast('Not kaydedildi')}
-function toast(t){alert(t)}
-
-function showModal(html){modalBody.innerHTML=html;modal.classList.add('show')}
-function closeModal(){modal.classList.remove('show')}
-
-function openPrep(){
- showModal(`<h3>⚡ Doktora Girmeden Önce</h3>
- <div class="card">
-  <label class="label">Ürün</label>
-  <select id="prepProduct" class="data" onchange="renderPrep()">${keys.map(k=>`<option value="${k}">${PRODUCTS[k].name}</option>`).join('')}</select>
-  <label class="label">Uzmanlık</label>
-  <select id="branch" class="data">
-   <option>Dahiliye</option><option>Endokrinoloji</option><option>Kardiyoloji</option><option>Nefroloji</option><option>Aile Hekimliği</option><option>Nöroloji</option><option>Kalp Damar Cerrahisi</option>
-  </select>
- </div><div id="prepOut"></div>`);
- renderPrep();
+function chooseSpec(id,s){spec=s;openProduct(id,'60sn')}
+function scriptCard(id,s){
+ const p=DATA[id],x=p.scripts[s];
+ return `<div class="script"><h3>${p.name} → ${s}</h3><div class="focus">${esc(x.focus)}</div><div class="script-text">${esc(x.text)}</div><div class="ok" style="margin-top:12px"><b>Pratik:</b> Bu metin yaklaşık 45–60 saniyelik akış içindir. Hekim ilgi gösterirse “Çalışmalar” sekmesinden ayrıntıya geç.</div></div>`;
 }
-function renderPrep(){
- const id=document.getElementById('prepProduct').value,p=PRODUCTS[id];
- const quick=getStored(id,'quick','Henüz 60 saniyelik saha mesajı kaydedilmedi.');
- const price=getStored(id,'price','Doğrulanmadı'), sut=getStored(id,'sut','Doğrulanmadı'), date=getStored(id,'date','—');
- document.getElementById('prepOut').innerHTML=`<div class="card" style="margin-top:10px">
-  <div class="kpi"><div><b>${p.forms.length}</b><small>Form</small></div><div><b>${p.studies.length}</b><small>Çalışma</small></div><div><b>${p.nice.length}</b><small>NICE</small></div></div>
-  <h3>${p.name}</h3><div class="label">${p.active}</div><hr>
-  <b>60 saniye mesajın</b><div style="white-space:pre-wrap;margin-top:7px">${esc(quick)}</div><hr>
-  <div class="row"><div class="label">Fiyat</div><div class="value">${esc(price)}</div></div>
-  <div class="row"><div class="label">SUT</div><div class="value">${esc(sut)}</div></div>
-  <div class="row"><div class="label">Son kontrol</div><div class="value">${esc(date)}</div></div>
- </div>`;
+function studyCard(s){return `<div class="study"><h4>${esc(s.name)}</h4><div class="kv"><div class="k">Tür</div><div>${esc(s.type)}</div></div><div class="kv"><div class="k">Hasta</div><div>${esc(s.population)}</div></div><div class="kv"><div class="k">Tasarım</div><div>${esc(s.design)}</div></div><div class="kv"><div class="k">Sonuç</div><div><b>${esc(s.result)}</b></div></div><div class="kv"><div class="k">Saha</div><div>${esc(s.field)}</div></div><div class="kv"><div class="k">Dikkat</div><div>${esc(s.warning)}</div></div></div>`}
+function compCard(c){return `<div class="comp"><div class="comp-head"><div><b>${esc(c.brand)}</b> <span class="muted">• ${esc(c.company)}</span></div><span class="type">${esc(c.type)}</span></div><small>${esc(c.detail)}<br><b>${esc(c.price)}</b></small></div>`}
+function quick(){
+ const first=Object.keys(DATA)[0];
+ app.innerHTML=`<div class="card"><h2 style="margin-top:0">⚡ 60 Saniye Hızlı Seçim</h2><label>İlaç</label><select id="qp" onchange="quickSpecs()">${Object.entries(DATA).map(([id,p])=>`<option value="${id}">${p.name}</option>`).join('')}</select><div id="qsWrap" style="margin-top:10px"></div><div id="qo"></div></div>`;
+ quickSpecs();
 }
-
-function openStudies(){
- let all=[];
- keys.forEach(k=>PRODUCTS[k].studies.forEach(s=>all.push([PRODUCTS[k].name,s])));
- showModal(`<h3>▤ Tüm Çalışmalar</h3>
- ${all.map(x=>`<div class="study"><span class="badge">${x[0]}</span><b style="margin-top:6px">${esc(x[1])}</b></div>`).join('')}
- <div class="notice">Sayısal çalışma sonuçları bu sürümde bilerek eklenmedi; doğrulanmış ana yayın verileriyle sonraki sürümde doldurulmalıdır.</div>`);
+function quickSpecs(){
+ const id=document.getElementById('qp').value,p=DATA[id];
+ document.getElementById('qsWrap').innerHTML=`<label>Uzmanlık</label><select id="qs" onchange="quickOut()">${specs(p).map(s=>`<option>${s}</option>`).join('')}</select>`;
+ quickOut();
 }
-
-function openData(){
- showModal(`<h3>⚙︎ Veri Yönetimi</h3>
- <div class="card">
-  <p style="margin-top:0">Fiyat, SUT, 60 saniye kartı ve notlarını yedekleyebilirsin.</p>
-  <button class="btn primary" onclick="exportBackup()">Yedeği indir (.json)</button>
-  <label class="btn secondary" style="display:inline-block;margin-top:8px">Yedeği geri yükle<input type="file" accept=".json" onchange="importBackup(this)" style="display:none"></label>
- </div>
- <div class="card" style="margin-top:10px"><b>Veri durumu</b>
- ${keys.map(k=>`<div class="row"><div>${PRODUCTS[k].name}</div><div class="value">${getStored(k,'price','')?'Fiyat ✓':'Fiyat —'} · ${getStored(k,'sut','')?'SUT ✓':'SUT —'}</div></div>`).join('')}
- </div>`);
-}
-function exportBackup(){
- const out={createdAt:new Date().toISOString(),data:{}};
- keys.forEach(k=>{out.data[k]={note:getStored(k,'note',''),quick:getStored(k,'quick',''),price:getStored(k,'price',''),sut:getStored(k,'sut',''),date:getStored(k,'date','')}});
- const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
- const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='fergin-saha-yedek.json';a.click();URL.revokeObjectURL(a.href);
-}
-function importBackup(inp){
- const f=inp.files[0]; if(!f)return;
- const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);Object.entries(o.data||{}).forEach(([k,v])=>Object.entries(v).forEach(([field,val])=>setStored(k,field,val||'')));alert('Yedek geri yüklendi.');closeModal();goHome()}catch(e){alert('Geçersiz yedek dosyası.')}};r.readAsText(f);
-}
-
-function installHelp(){
- showModal(`<h3>＋ iPhone Ana Ekranına Ekle</h3>
- <div class="card">
-  <p><b>1.</b> Bu uygulamayı HTTPS üzerinden aç.</p>
-  <p><b>2.</b> Safari'de <b>Paylaş</b> simgesine dokun.</p>
-  <p><b>3.</b> <b>Ana Ekrana Ekle</b> seç.</p>
-  <p><b>4.</b> Adı “Saha Asistanı” olarak bırak ve <b>Ekle</b> de.</p>
- </div>
- <div class="notice">ZIP içindeki dosyalar bir web adresinde yayınlandığında uygulama ana ekran simgesiyle açılır ve ilk yüklemeden sonra çevrimdışı da çalışır.</div>`);
-}
-
-document.getElementById('searchBox').addEventListener('input',e=>{
- const q=e.target.value.trim().toLocaleLowerCase('tr-TR'), out=document.getElementById('searchResults');
- if(q.length<2){out.classList.add('hidden');out.innerHTML='';return}
+function quickOut(){const id=document.getElementById('qp').value,s=document.getElementById('qs').value;document.getElementById('qo').innerHTML=scriptCard(id,s)}
+function studiesAll(){app.innerHTML=`<h2>▤ Tüm Çalışmalar</h2>${Object.values(DATA).map(p=>`<h3 class="section-title">${p.name}</h3>${p.studies.map(studyCard).join('')}`).join('')}`}
+function pricesAll(){app.innerHTML=`<h2>₺ Tüm Formlar & Fiyatlar</h2>${Object.values(DATA).map(p=>`<div class="card" style="margin-bottom:10px"><h3 style="margin-top:0">${p.name}</h3><div class="muted">Kontrol: ${p.price_date}</div>${p.forms.map(x=>`<div class="row"><div><b>${x.form}</b><div class="muted">${x.pack}</div></div><div class="value">${x.price}</div></div>`).join('')}</div>`).join('')}`}
+function competitorsAll(){app.innerHTML=`<h2>⇄ Tüm Rakipler</h2>${Object.values(DATA).map(p=>`<div class="card" style="margin-bottom:10px"><h3 style="margin-top:0">${p.name}</h3>${p.competitors.map(compCard).join('')}</div>`).join('')}`}
+function searchApp(v){
+ const q=v.trim().toLocaleLowerCase('tr-TR');if(q.length<2)return;
  let hits=[];
- keys.forEach(k=>{
-  const p=PRODUCTS[k];
-  const blob=[p.name,p.active,p.area,...p.forms,...p.studies,...p.nice.flat()].join(' ').toLocaleLowerCase('tr-TR');
-  if(blob.includes(q)) hits.push([k,p.name,p.active]);
+ Object.entries(DATA).forEach(([id,p])=>{
+   const blob=JSON.stringify(p).toLocaleLowerCase('tr-TR');
+   if(blob.includes(q))hits.push([id,p]);
  });
- out.innerHTML=hits.length?hits.map(h=>`<div class="search-item" onclick="openProduct('${h[0]}');document.getElementById('searchBox').value='';document.getElementById('searchResults').classList.add('hidden')"><b>${h[1]}</b><div class="label">${h[2]}</div></div>`).join(''):`<div class="search-item">Sonuç yok.</div>`;
- out.classList.remove('hidden');
-});
-
-
-goHome();
-</script>
-</body>
-</html>
+ app.innerHTML=`<button class="back" onclick="home()">← Ana sayfa</button><h3 class="section-title">Arama: ${esc(v)}</h3>${hits.length?hits.map(([id,p])=>`<div class="card" style="margin-bottom:9px" onclick="openProduct('${id}')"><b>${p.name}</b><div class="active">${p.active} • ${p.studies.length} çalışma • ${p.competitors.length} rakip</div></div>`).join(''):'<div class="card">Sonuç bulunamadı.</div>'}`;
+}
+home();
+</script></body></html>
