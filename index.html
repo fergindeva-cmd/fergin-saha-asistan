@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f4c3a">
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Saha Asistanı">
+<title>Fergin Saha Asistanı</title>
+<style>
+:root{
+  --bg:#f4f7f5; --card:#fff; --ink:#14221d; --muted:#68756f;
+  --brand:#0f4c3a; --brand2:#239167; --soft:#e9f4ef; --line:#dfe7e3;
+  --warn:#a35b00; --warnbg:#fff5e5; --red:#9d2f35; --redbg:#fff0f1;
+  --shadow:0 8px 24px rgba(16,52,40,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+body{padding-bottom:92px}
+button,input,select,textarea{font:inherit}
+header{
+  position:sticky;top:0;z-index:20;background:rgba(244,247,245,.94);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+  padding:calc(env(safe-area-inset-top) + 10px) 14px 12px;
+}
+.head{display:flex;align-items:center;gap:11px;max-width:1100px;margin:auto}
+.logo{width:42px;height:42px;border-radius:13px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:800;font-size:22px;box-shadow:var(--shadow)}
+h1{font-size:18px;margin:0;line-height:1.1}
+.sub{font-size:12px;color:var(--muted);margin-top:3px}
+.search{max-width:1100px;margin:10px auto 0;display:flex;gap:8px}
+.search input{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;outline:none}
+main{max-width:1100px;margin:auto;padding:14px}
+.hero{
+  background:linear-gradient(135deg,#0f4c3a,#197355);color:#fff;border-radius:22px;padding:18px;box-shadow:var(--shadow);
+  display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center
+}
+.hero h2{font-size:23px;margin:0 0 7px}.hero p{margin:0;opacity:.9;font-size:14px}
+.hero .pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);padding:8px 10px;border-radius:999px;font-size:12px}
+.section-title{font-size:16px;margin:22px 2px 10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:760px){.grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}
+.product{cursor:pointer;min-height:138px;display:flex;flex-direction:column;justify-content:space-between}
+.product .name{font-weight:800;font-size:17px}.product .active{font-size:12px;color:var(--muted);margin-top:4px}
+.badge{display:inline-block;font-size:11px;padding:5px 8px;border-radius:999px;background:var(--soft);color:var(--brand);font-weight:700}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quick button,.btn{border:0;border-radius:14px;padding:13px 14px;font-weight:750;cursor:pointer}
+.primary{background:var(--brand);color:white}.secondary{background:#fff;border:1px solid var(--line)!important;color:var(--ink)}
+.warn{background:var(--warnbg);color:var(--warn)}
+.red{background:var(--redbg);color:var(--red)}
+.tabs{display:flex;overflow:auto;gap:7px;padding-bottom:4px;margin:12px 0}
+.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-size:13px}
+.tab.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}.label{color:var(--muted);font-size:12px}.value{text-align:right;font-weight:650;font-size:13px}
+.study{padding:12px;border:1px solid var(--line);border-radius:14px;margin-bottom:9px;background:#fff}
+.study b{display:block;margin-bottom:6px}.study small{color:var(--muted)}
+.source a{color:var(--brand);text-decoration:none;font-weight:650}
+textarea{width:100%;min-height:110px;border:1px solid var(--line);border-radius:13px;padding:12px;resize:vertical}
+input.data,select.data{width:100%;border:1px solid var(--line);border-radius:11px;padding:10px;background:#fff}
+.notice{border-radius:14px;padding:12px;background:var(--warnbg);color:#754200;font-size:12px;line-height:1.45}
+.ok{border-radius:14px;padding:12px;background:var(--soft);color:#184d39;font-size:12px;line-height:1.45}
+footer{font-size:11px;color:var(--muted);padding:18px 3px 0;line-height:1.45}
+.bottom{
+  position:fixed;z-index:30;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:8px 8px calc(env(safe-area-inset-bottom) + 8px);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:3px
+}
+.bottom button{border:0;background:transparent;padding:8px 2px;color:var(--muted);font-size:11px}
+.bottom button span{display:block;font-size:20px;margin-bottom:2px}
+.modal{position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.42);display:none;align-items:flex-end}
+.modal.show{display:flex}.sheet{width:100%;max-height:88vh;overflow:auto;background:var(--bg);border-radius:24px 24px 0 0;padding:15px 15px calc(env(safe-area-inset-bottom) + 20px)}
+.handle{width:46px;height:5px;background:#c7d0cc;border-radius:99px;margin:0 auto 12px}
+.sheet h3{margin:4px 0 12px}
+.x{float:right;background:#fff;border:1px solid var(--line);border-radius:999px;width:34px;height:34px}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px;text-align:center}
+.kpi b{display:block;font-size:20px;color:var(--brand)}
+.search-results{margin-top:10px}.search-item{background:#fff;border:1px solid var(--line);padding:10px;border-radius:12px;margin-bottom:7px}
+.hidden{display:none!important}
+hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+</style>
+</head>
+<body>
+<header>
+  <div class="head">
+    <div class="logo">F+</div>
+    <div><h1>Fergin Saha Asistanı</h1><div class="sub">5 ürün • çalışmalar • NICE • saha notları</div></div>
+  </div>
+  <div class="search"><input id="searchBox" placeholder="eGFR, DAPA-CKD, NICE, rivaroksaban, fiyat…"></div>
+  <div id="searchResults" class="search-results hidden"></div>
+</header>
+
+<main id="app"></main>
+
+<nav class="bottom">
+  <button onclick="goHome()"><span>⌂</span>Ana Sayfa</button>
+  <button onclick="openPrep()"><span>⚡</span>60 Saniye</button>
+  <button onclick="openStudies()"><span>▤</span>Çalışmalar</button>
+  <button onclick="openData()"><span>⚙︎</span>Veri</button>
+</nav>
+
+<div id="modal" class="modal" onclick="if(event.target===this) closeModal()">
+ <div class="sheet">
+  <div class="handle"></div>
+  <button class="x" onclick="closeModal()">×</button>
+  <div id="modalBody"></div>
+ </div>
+</div>
+
+<script>
+const PRODUCTS = {
+ calira:{
+  name:"Calira", company:"Sanovel", active:"Dapagliflozin", area:"Endokrin ve Metabolizma",
+  forms:["10 mg"],
+  source:{label:"Sanovel ürün sayfası",url:"https://www.sanovel.com.tr/tedavi-alanlarimiz-urunlerimiz/urunlerimiz/calira"},
+  studies:["DECLARE–TIMI 58","DAPA-HF","DAPA-CKD","DELIVER","DAPA-MI"],
+  nice:[
+   ["NG28","Type 2 diabetes in adults: management","https://www.nice.org.uk/guidance/ng28"],
+   ["TA288","Dapagliflozin in combination therapy for type 2 diabetes","https://www.nice.org.uk/guidance/ta288"],
+   ["TA418","Dapagliflozin in triple therapy for type 2 diabetes","https://www.nice.org.uk/guidance/ta418"],
+   ["NG106","Chronic heart failure in adults","https://www.nice.org.uk/guidance/ng106"],
+   ["TA902","Dapagliflozin for HF with preserved/mildly reduced EF","https://www.nice.org.uk/guidance/ta902"],
+   ["NG203","Chronic kidney disease: assessment and management","https://www.nice.org.uk/guidance/ng203"],
+   ["TA1075","Dapagliflozin for treating chronic kidney disease","https://www.nice.org.uk/guidance/ta1075"]
+  ]
+ },
+ caliramet:{
+  name:"Calira-Met",company:"Sanovel",active:"Dapagliflozin + Metformin",area:"Endokrin ve Metabolizma",
+  forms:["5 mg / 850 mg","5 mg / 1000 mg"],
+  source:{label:"Sanovel ürün sayfası",url:"https://www.sanovel.com.tr/tedavi-alanlarimiz-urunlerimiz/urunlerimiz/calira-met"},
+  studies:["Dapagliflozin + metformin kombinasyon çalışmaları","DECLARE–TIMI 58 (molekül kanıtı)","DAPA-HF (molekül kanıtı)","DAPA-CKD (molekül kanıtı)","DELIVER (molekül kanıtı)"],
+  nice:[
+   ["NG28","Type 2 diabetes in adults: management","https://www.nice.org.uk/guidance/ng28"],
+   ["TA288","Dapagliflozin in combination therapy for type 2 diabetes","https://www.nice.org.uk/guidance/ta288"],
+   ["TA418","Dapagliflozin in triple therapy for type 2 diabetes","https://www.nice.org.uk/guidance/ta418"]
+  ]
+ },
+ calirametxr:{
+  name:"Calira-Met XR",company:"Sanovel",active:"Dapagliflozin + Metformin",area:"Endokrin ve Metabolizma",
+  forms:["5 mg / 500 mg","10 mg / 500 mg","5 mg / 1000 mg","10 mg / 1000 mg"],
+  source:{label:"Sanovel ürün sayfası",url:"https://www.sanovel.com.tr/tedavi-alanlarimiz-urunlerimiz/urunlerimiz/calira-met-xr"},
+  studies:["Dapagliflozin + uzatılmış salımlı metformin çalışmaları","Farmakokinetik / biyoeşdeğerlik çalışmaları","DECLARE–TIMI 58 (molekül kanıtı)","DAPA-HF (molekül kanıtı)","DAPA-CKD (molekül kanıtı)","DELIVER (molekül kanıtı)"],
+  nice:[
+   ["NG28","Type 2 diabetes in adults: management","https://www.nice.org.uk/guidance/ng28"],
+   ["TA288","Dapagliflozin in combination therapy for type 2 diabetes","https://www.nice.org.uk/guidance/ta288"]
+  ]
+ },
+ ator:{
+  name:"Ator",company:"Sanovel",active:"Atorvastatin",area:"Kardiyovasküler",
+  forms:["10 mg","20 mg","40 mg","80 mg"],
+  source:{label:"Sanovel ürün sayfası",url:"https://www.sanovel.com.tr/tedavi-alanlarimiz-urunlerimiz/urunlerimiz/ator"},
+  studies:["ASCOT-LLA","CARDS","TNT","IDEAL","SPARCL","MIRACL","PROVE IT–TIMI 22"],
+  nice:[
+   ["NG238","Cardiovascular disease: risk assessment and reduction, including lipid modification","https://www.nice.org.uk/guidance/ng238"]
+  ]
+ },
+ venomia:{
+  name:"Venomia",company:"Sanovel",active:"Rivaroksaban",area:"Kardiyovasküler",
+  forms:["15 mg","20 mg"],
+  source:{label:"Sanovel ürün sayfası",url:"https://www.sanovel.com.tr/tedavi-alanlarimiz-urunlerimiz/urunlerimiz/venomia"},
+  studies:["ROCKET AF","EINSTEIN-DVT","EINSTEIN-PE","EINSTEIN-Extension","EINSTEIN-CHOICE","RECORD 1","RECORD 2","RECORD 3","RECORD 4","COMPASS","VOYAGER PAD","ATLAS ACS 2–TIMI 51"],
+  nice:[
+   ["NG196","Atrial fibrillation: diagnosis and management","https://www.nice.org.uk/guidance/ng196"],
+   ["TA256","Rivaroxaban for prevention of stroke/systemic embolism in atrial fibrillation","https://www.nice.org.uk/guidance/ta256"],
+   ["TA261","Rivaroxaban for DVT treatment and prevention of recurrent DVT/PE","https://www.nice.org.uk/guidance/ta261"]
+  ]
+ }
+};
+
+const app=document.getElementById('app'), modal=document.getElementById('modal'), modalBody=document.getElementById('modalBody');
+const keys=Object.keys(PRODUCTS);
+let current=null, currentTab='ozet';
+
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function storeKey(id,field){return `fergin:${id}:${field}`}
+function getStored(id,field,def=''){return localStorage.getItem(storeKey(id,field)) ?? def}
+function setStored(id,field,val){localStorage.setItem(storeKey(id,field),val)}
+
+function goHome(){
+ current=null;
+ app.innerHTML=`
+  <section class="hero">
+   <div><h2>Doktora girmeden önce hazır ol.</h2><p>Ürünü seç, çalışmaları ve NICE başlıklarını kontrol et, kişisel saha notunu aç.</p></div>
+   <div class="pill">Çevrimdışı çalışır</div>
+  </section>
+  <h3 class="section-title">Ürünler</h3>
+  <div class="grid">
+   ${keys.map(k=>{const p=PRODUCTS[k];return `<div class="card product" onclick="openProduct('${k}')">
+     <div><div class="name">${p.name}</div><div class="active">${p.active}</div></div>
+     <div><span class="badge">${p.forms.length} form</span> <span class="badge">${p.studies.length} çalışma</span></div>
+   </div>`}).join('')}
+  </div>
+  <h3 class="section-title">Hızlı işlemler</h3>
+  <div class="quick">
+    <button class="primary" onclick="openPrep()">⚡ 60 Saniye</button>
+    <button class="secondary" onclick="openStudies()">▤ Tüm Çalışmalar</button>
+    <button class="secondary" onclick="openData()">⚙︎ Fiyat / SUT</button>
+    <button class="secondary" onclick="installHelp()">＋ Ana Ekrana Ekle</button>
+  </div>
+  <div class="notice" style="margin-top:14px"><b>Bilimsel güvenlik:</b> Uygulamadaki çalışma adları ve kılavuz başlıkları eğitim/saha organizasyonu içindir. Doz, endikasyon, fiyat ve SUT bilgileri güncel KÜB/KT/SGK kaynağı doğrulanmadan kullanılmamalıdır.</div>
+  <footer>Fergin Saha Asistanı • Yerel veriler cihazında saklanır. Uygulama hekim kararının veya güncel resmi ürün bilgisinin yerine geçmez.</footer>
+ `;
+}
+
+function openProduct(id,tab='ozet'){
+ current=id; currentTab=tab; const p=PRODUCTS[id];
+ app.innerHTML=`
+   <button class="btn secondary" onclick="goHome()">← Ana sayfa</button>
+   <div class="card" style="margin-top:10px">
+    <div style="display:flex;justify-content:space-between;gap:10px;align-items:start">
+      <div><div class="name" style="font-size:24px;font-weight:850">${p.name}</div><div class="active">${p.active}</div></div>
+      <span class="badge">${p.area}</span>
+    </div>
+   </div>
+   <div class="tabs">
+     ${[['ozet','Özet'],['calismalar','Çalışmalar'],['nice','NICE / Kılavuz'],['saha','60 Saniye'],['fiyat','Fiyat / SUT'],['not','Notlar']].map(x=>`<button class="tab ${tab===x[0]?'active':''}" onclick="openProduct('${id}','${x[0]}')">${x[1]}</button>`).join('')}
+   </div>
+   <div id="tabBody">${tabContent(id,tab)}</div>
+ `;
+}
+function tabContent(id,tab){
+ const p=PRODUCTS[id];
+ if(tab==='ozet') return `<div class="card">
+   <div class="row"><div class="label">Ürün</div><div class="value">${p.name}</div></div>
+   <div class="row"><div class="label">Firma</div><div class="value">${p.company}</div></div>
+   <div class="row"><div class="label">Etkin madde</div><div class="value">${p.active}</div></div>
+   <div class="row"><div class="label">Tedavi alanı</div><div class="value">${p.area}</div></div>
+   <div class="row"><div class="label">Formlar</div><div class="value">${p.forms.join('<br>')}</div></div>
+   <div class="row source"><div class="label">Resmi ürün kaynağı</div><div class="value"><a target="_blank" href="${p.source.url}">${p.source.label} ↗</a></div></div>
+ </div>`;
+ if(tab==='calismalar') return `<div class="ok"><b>Not:</b> Ticari marka ile molekül kanıtını birbirine karıştırmamak için çalışma adları “molekül kanıtı” şeklinde işaretlenebilir. Sayısal sonuçlar doğrulanmadan eklenmemiştir.</div>
+ <div style="margin-top:10px">${p.studies.map(s=>`<div class="study"><b>${esc(s)}</b><small>Detay: hasta grubu, hasta sayısı, primer sonlanım, HR/GA, sonuç ve kaynak alanları doğrulama sonrası eklenebilir.</small></div>`).join('')}</div>`;
+ if(tab==='nice') return `<div class="card">
+   ${p.nice.length?p.nice.map(n=>`<div class="study"><b>${n[0]} — ${n[1]}</b><div class="source"><a target="_blank" href="${n[2]}">NICE resmi sayfasını aç ↗</a></div></div>`).join(''):'<div class="notice">Bu ürün için NICE kaydı eklenmemiş.</div>'}
+ </div>`;
+ if(tab==='saha'){
+  const points=getStored(id,'quick','');
+  return `<div class="card">
+   <h3 style="margin-top:0">60 Saniye Saha Kartı</h3>
+   <div class="notice">Buraya yalnızca güncel KÜB/SUT ile doğruladığın mesajları yaz. Kaydedilen metin bu iPhone'da kalır.</div>
+   <label class="label">3 ana mesaj / kapanış</label>
+   <textarea id="quickText" placeholder="Örn. 1) ...&#10;2) ...&#10;3) ...&#10;Kapanış: ...">${esc(points)}</textarea>
+   <button class="btn primary" style="margin-top:8px" onclick="saveQuick('${id}')">Kaydet</button>
+  </div>`;
+ }
+ if(tab==='fiyat'){
+  const price=getStored(id,'price',''), sut=getStored(id,'sut',''), date=getStored(id,'date','');
+  return `<div class="card">
+    <h3 style="margin-top:0">Fiyat / SUT</h3>
+    <div class="notice">Fiyat ve SUT hızlı değişebilir. Kaynağı ve tarihi olmadan saha mesajına dönüştürme.</div>
+    <label class="label">Güncel fiyat</label><input class="data" id="price" value="${esc(price)}" placeholder="Örn. 000,00 TL">
+    <label class="label">SUT / geri ödeme notu</label><textarea id="sut" placeholder="Güncel resmi SUT özetini buraya yaz">${esc(sut)}</textarea>
+    <label class="label">Son kontrol tarihi</label><input class="data" id="date" value="${esc(date)}" placeholder="GG.AA.YYYY">
+    <button class="btn primary" style="margin-top:8px" onclick="savePrice('${id}')">Kaydet</button>
+  </div>`;
+ }
+ if(tab==='not'){
+  const note=getStored(id,'note','');
+  return `<div class="card"><h3 style="margin-top:0">Kişisel Saha Notu</h3>
+   <textarea id="noteText" placeholder="Örn. Bu hekim renal veriyi soruyor...">${esc(note)}</textarea>
+   <button class="btn primary" style="margin-top:8px" onclick="saveNote('${id}')">Notu Kaydet</button>
+  </div>`;
+ }
+ return '';
+}
+function saveQuick(id){setStored(id,'quick',document.getElementById('quickText').value);toast('60 saniye kartı kaydedildi')}
+function savePrice(id){setStored(id,'price',document.getElementById('price').value);setStored(id,'sut',document.getElementById('sut').value);setStored(id,'date',document.getElementById('date').value);toast('Fiyat/SUT kaydedildi')}
+function saveNote(id){setStored(id,'note',document.getElementById('noteText').value);toast('Not kaydedildi')}
+function toast(t){alert(t)}
+
+function showModal(html){modalBody.innerHTML=html;modal.classList.add('show')}
+function closeModal(){modal.classList.remove('show')}
+
+function openPrep(){
+ showModal(`<h3>⚡ Doktora Girmeden Önce</h3>
+ <div class="card">
+  <label class="label">Ürün</label>
+  <select id="prepProduct" class="data" onchange="renderPrep()">${keys.map(k=>`<option value="${k}">${PRODUCTS[k].name}</option>`).join('')}</select>
+  <label class="label">Uzmanlık</label>
+  <select id="branch" class="data">
+   <option>Dahiliye</option><option>Endokrinoloji</option><option>Kardiyoloji</option><option>Nefroloji</option><option>Aile Hekimliği</option><option>Nöroloji</option><option>Kalp Damar Cerrahisi</option>
+  </select>
+ </div><div id="prepOut"></div>`);
+ renderPrep();
+}
+function renderPrep(){
+ const id=document.getElementById('prepProduct').value,p=PRODUCTS[id];
+ const quick=getStored(id,'quick','Henüz 60 saniyelik saha mesajı kaydedilmedi.');
+ const price=getStored(id,'price','Doğrulanmadı'), sut=getStored(id,'sut','Doğrulanmadı'), date=getStored(id,'date','—');
+ document.getElementById('prepOut').innerHTML=`<div class="card" style="margin-top:10px">
+  <div class="kpi"><div><b>${p.forms.length}</b><small>Form</small></div><div><b>${p.studies.length}</b><small>Çalışma</small></div><div><b>${p.nice.length}</b><small>NICE</small></div></div>
+  <h3>${p.name}</h3><div class="label">${p.active}</div><hr>
+  <b>60 saniye mesajın</b><div style="white-space:pre-wrap;margin-top:7px">${esc(quick)}</div><hr>
+  <div class="row"><div class="label">Fiyat</div><div class="value">${esc(price)}</div></div>
+  <div class="row"><div class="label">SUT</div><div class="value">${esc(sut)}</div></div>
+  <div class="row"><div class="label">Son kontrol</div><div class="value">${esc(date)}</div></div>
+ </div>`;
+}
+
+function openStudies(){
+ let all=[];
+ keys.forEach(k=>PRODUCTS[k].studies.forEach(s=>all.push([PRODUCTS[k].name,s])));
+ showModal(`<h3>▤ Tüm Çalışmalar</h3>
+ ${all.map(x=>`<div class="study"><span class="badge">${x[0]}</span><b style="margin-top:6px">${esc(x[1])}</b></div>`).join('')}
+ <div class="notice">Sayısal çalışma sonuçları bu sürümde bilerek eklenmedi; doğrulanmış ana yayın verileriyle sonraki sürümde doldurulmalıdır.</div>`);
+}
+
+function openData(){
+ showModal(`<h3>⚙︎ Veri Yönetimi</h3>
+ <div class="card">
+  <p style="margin-top:0">Fiyat, SUT, 60 saniye kartı ve notlarını yedekleyebilirsin.</p>
+  <button class="btn primary" onclick="exportBackup()">Yedeği indir (.json)</button>
+  <label class="btn secondary" style="display:inline-block;margin-top:8px">Yedeği geri yükle<input type="file" accept=".json" onchange="importBackup(this)" style="display:none"></label>
+ </div>
+ <div class="card" style="margin-top:10px"><b>Veri durumu</b>
+ ${keys.map(k=>`<div class="row"><div>${PRODUCTS[k].name}</div><div class="value">${getStored(k,'price','')?'Fiyat ✓':'Fiyat —'} · ${getStored(k,'sut','')?'SUT ✓':'SUT —'}</div></div>`).join('')}
+ </div>`);
+}
+function exportBackup(){
+ const out={createdAt:new Date().toISOString(),data:{}};
+ keys.forEach(k=>{out.data[k]={note:getStored(k,'note',''),quick:getStored(k,'quick',''),price:getStored(k,'price',''),sut:getStored(k,'sut',''),date:getStored(k,'date','')}});
+ const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='fergin-saha-yedek.json';a.click();URL.revokeObjectURL(a.href);
+}
+function importBackup(inp){
+ const f=inp.files[0]; if(!f)return;
+ const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);Object.entries(o.data||{}).forEach(([k,v])=>Object.entries(v).forEach(([field,val])=>setStored(k,field,val||'')));alert('Yedek geri yüklendi.');closeModal();goHome()}catch(e){alert('Geçersiz yedek dosyası.')}};r.readAsText(f);
+}
+
+function installHelp(){
+ showModal(`<h3>＋ iPhone Ana Ekranına Ekle</h3>
+ <div class="card">
+  <p><b>1.</b> Bu uygulamayı HTTPS üzerinden aç.</p>
+  <p><b>2.</b> Safari'de <b>Paylaş</b> simgesine dokun.</p>
+  <p><b>3.</b> <b>Ana Ekrana Ekle</b> seç.</p>
+  <p><b>4.</b> Adı “Saha Asistanı” olarak bırak ve <b>Ekle</b> de.</p>
+ </div>
+ <div class="notice">ZIP içindeki dosyalar bir web adresinde yayınlandığında uygulama ana ekran simgesiyle açılır ve ilk yüklemeden sonra çevrimdışı da çalışır.</div>`);
+}
+
+document.getElementById('searchBox').addEventListener('input',e=>{
+ const q=e.target.value.trim().toLocaleLowerCase('tr-TR'), out=document.getElementById('searchResults');
+ if(q.length<2){out.classList.add('hidden');out.innerHTML='';return}
+ let hits=[];
+ keys.forEach(k=>{
+  const p=PRODUCTS[k];
+  const blob=[p.name,p.active,p.area,...p.forms,...p.studies,...p.nice.flat()].join(' ').toLocaleLowerCase('tr-TR');
+  if(blob.includes(q)) hits.push([k,p.name,p.active]);
+ });
+ out.innerHTML=hits.length?hits.map(h=>`<div class="search-item" onclick="openProduct('${h[0]}');document.getElementById('searchBox').value='';document.getElementById('searchResults').classList.add('hidden')"><b>${h[1]}</b><div class="label">${h[2]}</div></div>`).join(''):`<div class="search-item">Sonuç yok.</div>`;
+ out.classList.remove('hidden');
+});
+
+
+goHome();
+</script>
+</body>
+</html>
